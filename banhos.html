@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banhos Espirituais | Nythra Ateliê</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/DHYthgDk/Design-sem-nome.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F9E498;
+            --gold-dark: #996515;
+            --bg-black: #030303;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: #d4d4d4;
+            font-family: 'Cormorant Garamond', serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .nav-item {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .gold-text {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 8s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .noise {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Efeito de Vidro Místico */
+        .mystic-card {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .mystic-card:hover {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.05);
+        }
+
+        /* Imagem Hero */
+        .hero-image-frame {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-image-frame::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--gold-primary);
+            opacity: 0.2;
+            transform: rotate(2deg);
+        }
+
+        .main-img {
+            width: 100%;
+            height: auto;
+            filter: sepia(0.2) contrast(1.1) brightness(0.9);
+            box-shadow: 0 0 50px rgba(0,0,0,1);
+        }
+
+        .quote-section {
+            font-style: italic;
+            position: relative;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .quote-section::before {
+            content: "“";
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 8rem;
+            color: var(--gold-primary);
+            opacity: 0.1;
+            font-family: 'Cinzel Decorative';
+        }
+
+        .intentions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .intention-tag {
+            padding: 10px 20px;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .intention-tag:hover {
+            background: var(--gold-primary);
+            color: black;
+            border-color: var(--gold-primary);
+        }
+
+        .float { animation: float-anim 6s ease-in-out infinite; }
+        @keyframes float-anim {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+
+    <!-- Navegação -->
+    <nav class="fixed top-0 w-full z-50 bg-black/95 border-b border-gold-primary/10 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-8 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center group">
+                <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" alt="Nythra Logo" class="w-12 h-12 object-contain mix-blend-lighten">
+                <span class="ml-4 text-lg font-bold gold-text tracking-widest uppercase">Nythra</span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-10 text-[10px] uppercase tracking-[0.3em] font-light">
+                <a href="index.html" class="hover:text-gold-light transition-colors">Portal Principal</a>
+                <a href="oraculos.html" class="hover:text-gold-light transition-colors">Oráculos</a>
+                <a href="https://wa.me/SEU_NUMERO_AQUI" class="px-5 py-2 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-black transition-all">Consagrar Banho</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Grandioso -->
+    <header class="pt-48 pb-20 text-center px-4 overflow-hidden relative">
+        <!-- Elemento de fundo sutil -->
+        <div class="absolute top-10 left-1/2 -translate-x-1/2 opacity-5 w-full">
+            <h2 class="text-[15vw] font-black uppercase tracking-tighter leading-none select-none">Limpeza</h2>
+        </div>
+
+        <div class="relative z-10">
+            <p class="text-gold-primary/50 tracking-[0.8em] uppercase text-[10px] mb-6">Alquimia da Água e das Ervas</p>
+            <h1 class="text-6xl md:text-8xl font-black gold-text mb-12 uppercase tracking-tighter">Banhos Espirituais</h1>
+            
+            <div class="hero-image-frame reveal">
+                <img src="https://i.ibb.co/NnscXHrZ/Whats-App-Image-2025-12-26-at-19-01-56.jpg" alt="Banhos Místicos" class="main-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- Citação de Abertura -->
+    <section class="max-w-4xl mx-auto px-6 quote-section reveal">
+        <p class="text-2xl md:text-4xl text-gold-light font-light leading-snug">
+            "Que a água leve o que é denso e as ervas tragam o que é luz. No fluir do banho, a alma se despe do passado e se reveste de poder."
+        </p>
+        <span class="block mt-8 text-[10px] uppercase tracking-[0.4em] text-gold-primary/40">— Cântico de Consagração Nythra</span>
+    </section>
+
+    <!-- Descrição Principal -->
+    <section class="max-w-6xl mx-auto px-6 py-32">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div class="space-y-8 reveal">
+                <h2 class="text-4xl gold-text uppercase">O Ritual da Fluidez</h2>
+                <div class="w-20 h-px bg-gold-primary/30"></div>
+                <p class="text-xl leading-relaxed text-gray-300 italic font-light">
+                    Os Banhos Espirituais são preparados para promover limpeza, equilíbrio, fortalecimento e direcionamento energético, atuando de forma profunda no campo espiritual, emocional e vibracional.
+                </p>
+                <p class="text-gray-400 leading-relaxed font-light">
+                    Cada banho é desenvolvido com intenção específica, respeitando fundamentos da feitiçaria tradicional e o momento espiritual de quem o recebe. Todos os banhos são preparados artesanalmente, consagrados e energizados antes do envio, mantendo a força do propósito ao qual se destinam.
+                </p>
+            </div>
+            
+            <div class="mystic-card p-12 space-y-8 reveal" style="transition-delay: 0.2s;">
+                <h3 class="text-xl gold-text uppercase tracking-widest">Espectro de Atuação</h3>
+                <div class="intentions-grid">
+                    <div class="intention-tag">Limpeza</div>
+                    <div class="intention-tag">Proteção</div>
+                    <div class="intention-tag">Abertura</div>
+                    <div class="intention-tag">Amor</div>
+                    <div class="intention-tag">Prosperidade</div>
+                    <div class="intention-tag">Cura</div>
+                    <div class="intention-tag">Magnetismo</div>
+                    <div class="intention-tag">Harmonia</div>
+                </div>
+                <p class="text-xs text-gray-500 italic pt-6 leading-loose">
+                    Indicados para a remoção de cargas densas e ativação de novas vibrações, auxiliando no realinhamento espiritual necessário para a sua jornada.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secção de Preparo e Sabedoria -->
+    <section class="bg-zinc-950/30 py-32 border-y border-gold-primary/5">
+        <div class="max-w-4xl mx-auto px-6 text-center reveal">
+            <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" class="w-20 h-20 mx-auto mb-12 mix-blend-lighten opacity-30 float">
+            <h2 class="text-3xl gold-text mb-10 uppercase tracking-widest">Consagração e Uso</h2>
+            <p class="text-lg text-gray-400 font-light leading-relaxed mb-12">
+                "O banho espiritual não é apenas um preparo energético, mas um ato sagrado de cuidado, reconexão e transformação."
+            </p>
+            <p class="text-gray-500 font-light text-sm leading-loose max-w-2xl mx-auto">
+                Eles podem ser utilizados de forma ritualística ou integrados à rotina espiritual, sempre acompanhados de orientações básicas para um uso consciente e seguro. Sentir a erva, o aroma e a temperatura é parte do diálogo com o invisível.
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-40 text-center px-6">
+        <h2 class="text-4xl md:text-6xl gold-text mb-14 uppercase tracking-tighter">Deseja um banho personalizado?</h2>
+        <p class="text-gold-primary/40 uppercase tracking-[0.5em] text-[10px] mb-20 leading-loose">
+            Adriana canaliza as ervas ideais para o seu momento atual.<br>Sinta a força da transmutação na sua pele.
+        </p>
+        
+        <a href="https://wa.me/SEU_NUMERO_AQUI?text=Olá! Gostaria de encomendar um banho espiritual personalizado." 
+           class="inline-block px-12 py-6 border-2 border-gold-primary text-gold-primary font-bold uppercase tracking-[0.6em] hover:bg-gold-primary hover:text-black transition-all duration-700 shadow-[0_0_30px_rgba(212,175,55,0.1)]">
+            Encomendar meu Banho
+        </a>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="py-20 text-center opacity-30 border-t border-gold-primary/5">
+        <p class="text-[10px] uppercase tracking-[0.8em]">Nythra Ateliê • Alquimia de Transmutação</p>
+        <div class="mt-8 flex justify-center space-x-6 text-[9px] uppercase tracking-widest">
+            <a href="index.html" class="hover:text-gold-primary">Início</a>
+            <a href="oraculos.html" class="hover:text-gold-primary">Oráculos</a>
+            <a href="pos.html" class="hover:text-gold-primary">Pós</a>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(40px)";
+            el.style.transition = "all 1.2s cubic-bezier(0.22, 1, 0.36, 1)";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

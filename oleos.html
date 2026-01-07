@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Óleos Artesanais | Nythra Ateliê</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/DHYthgDk/Design-sem-nome.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F9E498;
+            --gold-dark: #996515;
+            --bg-black: #030303;
+            --amber-glow: rgba(212, 175, 55, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: #d4d4d4;
+            font-family: 'Cormorant Garamond', serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .nav-item {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .gold-text {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 8s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .noise {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .oil-frame {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            padding: 25px;
+            background: linear-gradient(45deg, rgba(20,15,5,0.4), transparent);
+        }
+
+        .main-img {
+            width: 100%;
+            height: auto;
+            filter: contrast(1.05) brightness(0.85);
+            box-shadow: 0 0 60px rgba(0,0,0,0.8);
+        }
+
+        .category-card {
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.05);
+            padding: 40px;
+            transition: all 0.5s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .category-card:hover {
+            border-color: var(--gold-primary);
+            background: rgba(15, 12, 8, 0.8);
+            transform: translateY(-5px);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 24px;
+            color: var(--gold-primary);
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.3));
+        }
+
+        .oil-list {
+            width: 100%;
+            text-align: left;
+        }
+
+        .oil-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: #a0a0a0;
+            transition: color 0.3s ease;
+        }
+
+        .oil-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--gold-primary);
+            opacity: 0.5;
+        }
+
+        .oil-list li:hover {
+            color: var(--gold-light);
+        }
+
+        .quote-block {
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 60px 20px;
+            margin: 80px 0;
+            text-align: center;
+        }
+
+        .btn-anoint {
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+            letter-spacing: 0.4em;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            background: transparent;
+        }
+
+        .btn-anoint:hover {
+            background: var(--gold-primary);
+            color: black;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .float { animation: float-anim 5s ease-in-out infinite; }
+        @keyframes float-anim {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+
+    <!-- Navegação -->
+    <nav class="fixed top-0 w-full z-50 bg-black/95 border-b border-gold-primary/10 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-8 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center group">
+                <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" alt="Nythra Logo" class="w-12 h-12 object-contain mix-blend-lighten">
+                <span class="ml-4 text-lg font-bold gold-text tracking-widest uppercase">Nythra</span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-10 text-[10px] uppercase tracking-[0.3em] font-light">
+                <a href="index.html" class="hover:text-gold-light transition-colors">Portal</a>
+                <a href="banhos.html" class="hover:text-gold-light transition-colors">Banhos</a>
+                <a href="pos.html" class="hover:text-gold-light transition-colors">Pós</a>
+                <a href="https://wa.me/SEU_NUMERO_AQUI" class="px-5 py-2 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-black transition-all">Consagrar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-48 pb-24 text-center px-4 relative">
+        <div class="absolute top-24 left-1/2 -translate-x-1/2 opacity-5 w-full">
+            <h2 class="text-[14vw] font-black uppercase tracking-tighter leading-none select-none">Unguentos</h2>
+        </div>
+
+        <div class="relative z-10">
+            <p class="text-gold-primary/40 tracking-[1.2em] uppercase text-[8px] mb-8">A Fluidez da Intenção & Alquimia Botânica</p>
+            <h1 class="text-6xl md:text-8xl font-black gold-text mb-16 uppercase tracking-tight">Óleos Artesanais</h1>
+            
+            <div class="oil-frame reveal">
+                <img src="https://i.ibb.co/p6V3GWdY/Whats-App-Image-2025-12-26-at-19-02-42.jpg" alt="Óleos Consagrados Nythra" class="main-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- Ensinamento -->
+    <section class="max-w-4xl mx-auto px-6 py-20 text-center reveal">
+        <h2 class="text-2xl gold-text mb-10 uppercase tracking-widest">A Magia do Toque</h2>
+        <p class="text-xl text-gray-400 font-light leading-relaxed italic">
+            "Ungir é um ato de soberania. Quando o óleo toca a pele ou o objeto, ele cria um selo de poder que transita entre o visível e o invisível, carregando a alma das plantas e o sopro da bruxa."
+        </p>
+        <div class="w-12 h-px bg-gold-primary mx-auto mt-12 opacity-30"></div>
+    </section>
+
+    <!-- Catálogo de Óleos -->
+    <main class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            
+            <!-- Amor e Relações -->
+            <div class="category-card reveal">
+                <svg viewBox="0 0 100 100" class="category-icon float">
+                    <path d="M50 20 L35 35 V75 C35 80 40 85 50 85 C60 85 65 80 65 75 V35 L50 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path d="M50 45 Q55 40 60 45 Q65 50 50 65 Q35 50 40 45 Q45 40 50 45" fill="currentColor" opacity="0.6"/>
+                    <path d="M45 15 H55 V20 H45 Z" fill="currentColor"/>
+                </svg>
+                <h3 class="text-xl gold-text mb-8 border-b border-gold-primary/10 pb-4 w-full">Amor & Relações</h3>
+                <ul class="oil-list">
+                    <li>Óleo Amor Verdadeiro</li>
+                    <li>Óleo Paixão Ardente</li>
+                    <li>Óleo Adoçamento</li>
+                    <li>Óleo União</li>
+                    <li>Óleo Reconciliação</li>
+                    <li>Óleo Harmonia Amorosa</li>
+                    <li>Óleo Vínculo Espiritual</li>
+                    <li>Óleo Encantamento</li>
+                </ul>
+            </div>
+
+            <!-- Luxúria e Atração -->
+            <div class="category-card reveal" style="transition-delay: 0.1s;">
+                <svg viewBox="0 0 100 100" class="category-icon float" style="animation-delay: 1s;">
+                    <path d="M50 20 L35 35 V75 C35 80 40 85 50 85 C60 85 65 80 65 75 V35 L50 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path d="M50 40 Q55 50 50 65 Q45 50 50 40" fill="currentColor" opacity="0.6"/>
+                    <path d="M48 45 Q52 55 50 70 Q48 55 52 45" fill="currentColor" opacity="0.3"/>
+                    <path d="M45 15 H55 V20 H45 Z" fill="currentColor"/>
+                </svg>
+                <h3 class="text-xl gold-text mb-8 border-b border-gold-primary/10 pb-4 w-full">Luxúria & Magnetismo</h3>
+                <ul class="oil-list">
+                    <li>Óleo Luxúria</li>
+                    <li>Óleo Desejo</li>
+                    <li>Óleo Magnetismo Pessoal</li>
+                    <li>Óleo Atração Sexual</li>
+                    <li>Óleo Sedução</li>
+                    <li>Óleo Fascínio</li>
+                    <li>Óleo Encanto Corporal</li>
+                    <li>Óleo Domínio</li>
+                </ul>
+            </div>
+
+            <!-- Prosperidade -->
+            <div class="category-card reveal" style="transition-delay: 0.2s;">
+                <svg viewBox="0 0 100 100" class="category-icon float" style="animation-delay: 2s;">
+                    <path d="M50 20 L35 35 V75 C35 80 40 85 50 85 C60 85 65 80 65 75 V35 L50 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="50" cy="55" r="10" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    <path d="M50 48 V62 M45 55 H55" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M45 15 H55 V20 H45 Z" fill="currentColor"/>
+                </svg>
+                <h3 class="text-xl gold-text mb-8 border-b border-gold-primary/10 pb-4 w-full">Prosperidade & Caminhos</h3>
+                <ul class="oil-list">
+                    <li>Óleo Prosperidade</li>
+                    <li>Óleo Fortuna</li>
+                    <li>Óleo Abre-Caminhos</li>
+                    <li>Óleo Sucesso</li>
+                    <li>Óleo Crescimento Financeiro</li>
+                    <li>Óleo Fartura</li>
+                    <li>Óleo Riqueza</li>
+                    <li>Óleo Oportunidades</li>
+                </ul>
+            </div>
+
+            <!-- Proteção e Defesa -->
+            <div class="category-card reveal">
+                <svg viewBox="0 0 100 100" class="category-icon float">
+                    <path d="M50 20 L35 35 V75 C35 80 40 85 50 85 C60 85 65 80 65 75 V35 L50 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path d="M40 45 V55 L50 65 L60 55 V45 Z" fill="currentColor" opacity="0.6"/>
+                    <path d="M45 15 H55 V20 H45 Z" fill="currentColor"/>
+                </svg>
+                <h3 class="text-xl gold-text mb-8 border-b border-gold-primary/10 pb-4 w-full">Proteção & Defesa</h3>
+                <ul class="oil-list">
+                    <li>Óleo Proteção</li>
+                    <li>Óleo Escudo Espiritual</li>
+                    <li>Óleo Guardião</li>
+                    <li>Óleo Defesa Mágica</li>
+                    <li>Óleo Contra Inveja</li>
+                    <li>Óleo Contra Ataques</li>
+                    <li>Óleo Selamento</li>
+                    <li>Óleo Quebra-Demanda</li>
+                </ul>
+            </div>
+
+            <!-- Limpeza -->
+            <div class="category-card reveal" style="transition-delay: 0.1s;">
+                <svg viewBox="0 0 100 100" class="category-icon float" style="animation-delay: 1.5s;">
+                    <path d="M50 20 L35 35 V75 C35 80 40 85 50 85 C60 85 65 80 65 75 V35 L50 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="45" cy="50" r="3" fill="currentColor" opacity="0.6"/>
+                    <circle cx="55" cy="60" r="2" fill="currentColor" opacity="0.4"/>
+                    <circle cx="50" cy="70" r="4" fill="currentColor" opacity="0.8"/>
+                    <path d="M45 15 H55 V20 H45 Z" fill="currentColor"/>
+                </svg>
+                <h3 class="text-xl gold-text mb-8 border-b border-gold-primary/10 pb-4 w-full">Limpeza & Banimento</h3>
+                <ul class="oil-list">
+                    <li>Óleo Limpeza Espiritual</li>
+                    <li>Óleo Descarrego</li>
+                    <li>Óleo Banimento</li>
+                    <li>Óleo Purificação</li>
+                    <li>Óleo Corte de Laços</li>
+                    <li>Óleo Remoção de Energias Densas</li>
+                </ul>
+            </div>
+
+            <!-- Cura -->
+            <div class="category-card reveal" style="transition-delay: 0.2s;">
+                <svg viewBox="0 0 100 100" class="category-icon float" style="animation-delay: 0.5s;">
+                    <path d="M50 20 L35 35 V75 C35 80 40 85 50 85 C60 85 65 80 65 75 V35 L50 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path d="M50 65 Q45 55 45 45 Q55 50 50 65" fill="currentColor" opacity="0.6"/>
+                    <path d="M50 65 Q55 55 55 45 Q45 50 50 65" fill="currentColor" opacity="0.4"/>
+                    <path d="M45 15 H55 V20 H45 Z" fill="currentColor"/>
+                </svg>
+                <h3 class="text-xl gold-text mb-8 border-b border-gold-primary/10 pb-4 w-full">Cura & Equilíbrio</h3>
+                <ul class="oil-list">
+                    <li>Óleo Cura</li>
+                    <li>Óleo Alívio</li>
+                    <li>Óleo Restabelecimento</li>
+                    <li>Óleo Vitalidade</li>
+                    <li>Óleo Regeneração</li>
+                    <li>Óleo Equilíbrio Energético</li>
+                    <li>Óleo Fortalecimento</li>
+                </ul>
+            </div>
+
+            <!-- Poder e Feitiçaria -->
+            <div class="category-card reveal">
+                <svg viewBox="0 0 100 100" class="category-icon float">
+                    <path d="M50 20 L35 35 V75 C35 80 40 85 50 85 C60 85 65 80 65 75 V35 L50 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path d="M45 55 A8 8 0 1 0 55 55 A8 8 0 1 1 45 55" fill="currentColor" opacity="0.6"/>
+                    <path d="M45 15 H55 V20 H45 Z" fill="currentColor"/>
+                </svg>
+                <h3 class="text-xl gold-text mb-8 border-b border-gold-primary/10 pb-4 w-full">Poder & Feitiçaria</h3>
+                <ul class="oil-list">
+                    <li>Óleo Poder Pessoal</li>
+                    <li>Óleo Feitiçaria</li>
+                    <li>Óleo Magia Ancestral</li>
+                    <li>Óleo Despertar Espiritual</li>
+                    <li>Óleo Sabedoria</li>
+                    <li>Óleo Conexão Espiritual</li>
+                </ul>
+            </div>
+
+            <!-- Domínio e Justiça -->
+            <div class="category-card reveal" style="transition-delay: 0.1s;">
+                <svg viewBox="0 0 100 100" class="category-icon float">
+                    <path d="M50 20 L35 35 V75 C35 80 40 85 50 85 C60 85 65 80 65 75 V35 L50 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path d="M40 55 H60 M50 45 V65" stroke="currentColor" stroke-width="2" opacity="0.6"/>
+                    <path d="M45 15 H55 V20 H45 Z" fill="currentColor"/>
+                </svg>
+                <h3 class="text-xl gold-text mb-8 border-b border-gold-primary/10 pb-4 w-full">Domínio & Justiça</h3>
+                <ul class="oil-list">
+                    <li>Óleo Dominação</li>
+                    <li>Óleo Comando</li>
+                    <li>Óleo Influência</li>
+                    <li>Óleo Justiça</li>
+                    <li>Óleo Verdade</li>
+                    <li>Óleo Quebra de Ilusões</li>
+                </ul>
+            </div>
+
+            <!-- Necromancia -->
+            <div class="category-card reveal" style="transition-delay: 0.2s;">
+                <svg viewBox="0 0 100 100" class="category-icon float" style="animation-delay: 0.8s;">
+                    <path d="M50 20 L35 35 V75 C35 80 40 85 50 85 C60 85 65 80 65 75 V35 L50 20 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                    <path d="M45 50 Q50 45 55 50 V60 Q50 65 45 60 Z" fill="currentColor" opacity="0.6"/>
+                    <circle cx="48" cy="53" r="1.5" fill="black" opacity="0.5"/>
+                    <circle cx="52" cy="53" r="1.5" fill="black" opacity="0.5"/>
+                    <path d="M45 15 H55 V20 H45 Z" fill="currentColor"/>
+                </svg>
+                <h3 class="text-xl gold-text mb-8 border-b border-gold-primary/10 pb-4 w-full">Caminhos Profundos</h3>
+                <ul class="oil-list">
+                    <li>Óleo Necromântico</li>
+                    <li>Óleo Portais</li>
+                    <li>Óleo Guardião dos Mortos</li>
+                    <li>Óleo Chamado Ancestral</li>
+                </ul>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Citação de Livro/Tradição -->
+    <section class="quote-block reveal">
+        <div class="max-w-3xl mx-auto px-6">
+            <p class="text-2xl text-gold-light font-light italic leading-snug mb-8">
+                "Assim como o azeite penetra na madeira e a protege do tempo, o óleo sagrado penetra no espírito e o reveste de autoridade."
+            </p>
+            <span class="text-[9px] uppercase tracking-[0.4em] text-gray-600">— Do 'Tratado sobre as Óleos e Selos de Poder'</span>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-44 text-center px-6">
+        <h2 class="text-4xl md:text-6xl gold-text mb-14 uppercase tracking-tighter">O Selo de sua Vontade</h2>
+        <p class="max-w-2xl mx-auto text-gray-500 font-light text-sm mb-20 leading-loose">
+            Cada frasco é preparado sob a regência planetária adequada, em pequenos lotes ou de forma totalmente personalizada para o seu caso. Adriana consagra cada gota com o fundamento necessário.
+        </p>
+        
+        <a href="https://wa.me/SEU_NUMERO_AQUI?text=Olá! Gostaria de consultar a Adriana sobre os Óleos Consagrados." 
+           class="inline-block px-14 py-7 btn-anoint text-[10px] uppercase font-bold">
+            Consagrar meu Óleo
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 text-center opacity-30 border-t border-gold-primary/5">
+        <p class="text-[10px] uppercase tracking-[0.8em] mb-8">Nythra Ateliê • Sigilo • Fundamento • Ética</p>
+        <div class="flex justify-center space-x-8 text-[9px] uppercase tracking-widest">
+            <a href="index.html" class="hover:text-gold-primary transition-colors">Portal Principal</a>
+            <a href="pos.html" class="hover:text-gold-primary transition-colors">Voltar: Pós</a>
+            <a href="velas.html" class="hover:text-gold-primary transition-colors">Próximo: Velas</a>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "all 1s cubic-bezier(0.22, 1, 0.36, 1)";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

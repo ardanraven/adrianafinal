@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pós Artesanais | Nythra Ateliê</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/DHYthgDk/Design-sem-nome.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F9E498;
+            --gold-dark: #996515;
+            --bg-black: #030303;
+            --earth-brown: #2c1e14;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: #d4d4d4;
+            font-family: 'Cormorant Garamond', serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .nav-item {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .gold-text {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 8s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .noise {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Moldura de Imagem Estilo Grimório */
+        .grimoire-frame {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 15px;
+            background: rgba(44, 30, 20, 0.1);
+        }
+
+        .main-img {
+            width: 100%;
+            height: auto;
+            filter: contrast(1.1) brightness(0.8) sepia(0.2);
+            transition: all 0.8s ease;
+        }
+
+        .main-img:hover {
+            filter: contrast(1.1) brightness(1);
+        }
+
+        .mystic-card {
+            background: linear-gradient(145deg, rgba(20,15,10,0.9) 0%, rgba(5,5,5,1) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .mystic-card:hover {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 40px rgba(153, 101, 21, 0.15);
+        }
+
+        .teaching-block {
+            border-left: 1px solid var(--gold-primary);
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+
+        .float { animation: float-anim 6s ease-in-out infinite; }
+        @keyframes float-anim {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .btn-ritual {
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+            letter-spacing: 0.3em;
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-ritual:hover {
+            background: var(--gold-primary);
+            color: black;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+
+    <!-- Navegação -->
+    <nav class="fixed top-0 w-full z-50 bg-black/95 border-b border-gold-primary/10 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-8 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center group">
+                <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" alt="Nythra Logo" class="w-12 h-12 object-contain mix-blend-lighten">
+                <span class="ml-4 text-lg font-bold gold-text tracking-widest uppercase">Nythra</span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-10 text-[10px] uppercase tracking-[0.3em] font-light">
+                <a href="index.html" class="hover:text-gold-light transition-colors">Portal Principal</a>
+                <a href="banhos.html" class="hover:text-gold-light transition-colors">Banhos</a>
+                <a href="https://wa.me/SEU_NUMERO_AQUI" class="px-5 py-2 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-black transition-all">Encomendar Pó</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-48 pb-20 text-center px-4 relative">
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 opacity-5 w-full">
+            <h2 class="text-[12vw] font-black uppercase tracking-tighter leading-none select-none">Essência</h2>
+        </div>
+
+        <div class="relative z-10">
+            <p class="text-gold-primary/50 tracking-[1em] uppercase text-[9px] mb-6">Alquimia em Pó & Sopros de Intenção</p>
+            <h1 class="text-5xl md:text-7xl font-black gold-text mb-12 uppercase tracking-tight">Pós Artesanais</h1>
+            
+            <div class="grimoire-frame reveal">
+                <img src="https://i.ibb.co/FqsFLw2y/Whats-App-Image-2025-12-26-at-19-02-13.jpg" alt="Pós Mágicos Nythra" class="main-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- Citação Central -->
+    <section class="max-w-4xl mx-auto px-6 py-24 text-center reveal">
+        <p class="text-2xl md:text-3xl text-gold-light font-light italic leading-snug">
+            "O pó é a memória da terra, o remanescente do fogo e o veículo do ar. Quando soprado com vontade, ele tece a teia da realidade."
+        </p>
+        <span class="block mt-8 text-[10px] uppercase tracking-[0.4em] text-gold-primary/40">— Fragmento de Sabedoria Tradicional</span>
+    </section>
+
+    <!-- Descrição e Fundamentos -->
+    <section class="max-w-6xl mx-auto px-6 py-20">
+        <div class="grid lg:grid-cols-2 gap-24 items-start">
+            <div class="space-y-10 reveal">
+                <h2 class="text-4xl gold-text uppercase">Fundamento e Ética</h2>
+                <div class="w-16 h-px bg-gold-primary/40"></div>
+                <div class="space-y-6 text-gray-300 font-light leading-relaxed text-lg">
+                    <p>
+                        Os Pós são preparados artesanalmente a partir de fundamentos tradicionais da feitiçaria, com respeito às forças espirituais, ao tempo de preparo e à finalidade de cada trabalho.
+                    </p>
+                    <p class="italic text-gold-light/70">
+                        "Aqui, a magia não é produto de prateleira. É trabalho sagrado, feito com intenção, fundamento e devoção."
+                    </p>
+                    <p>
+                        Cada pó carrega intenção, consagração e direcionamento energético, sendo desenvolvido para atuar de forma sutil, porém profunda, nos campos espiritual, emocional e energético. Produzidos em pequenos lotes, respeitam limites espirituais e a real necessidade de quem os solicita.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mystic-card p-12 space-y-8 reveal" style="transition-delay: 0.2s;">
+                <h3 class="text-xl gold-text uppercase tracking-widest mb-6">Aplicações Ritualísticas</h3>
+                <ul class="space-y-4 text-sm text-gray-400 font-light italic">
+                    <li class="flex items-center space-x-4 border-b border-white/5 pb-2">
+                        <span class="text-gold-primary">✦</span>
+                        <span>Consagração de Velas e Instrumentos</span>
+                    </li>
+                    <li class="flex items-center space-x-4 border-b border-white/5 pb-2">
+                        <span class="text-gold-primary">✦</span>
+                        <span>Selamentos e Ativações de Portais</span>
+                    </li>
+                    <li class="flex items-center space-x-4 border-b border-white/5 pb-2">
+                        <span class="text-gold-primary">✦</span>
+                        <span>Firmezas e Amuletos de Proteção</span>
+                    </li>
+                    <li class="flex items-center space-x-4 border-b border-white/5 pb-2">
+                        <span class="text-gold-primary">✦</span>
+                        <span>Banhos Secos e Limpezas de Ambientes</span>
+                    </li>
+                    <li class="flex items-center space-x-4 border-b border-white/5 pb-2">
+                        <span class="text-gold-primary">✦</span>
+                        <span>Encantamentos de Atração e Domínio</span>
+                    </li>
+                </ul>
+                <p class="text-[10px] text-gray-600 uppercase tracking-widest pt-4">
+                    Instrumentos de potencialização, proteção e abertura de caminhos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Saberes Ancestrais -->
+    <section class="bg-zinc-950/40 py-32 border-y border-gold-primary/5">
+        <div class="max-w-4xl mx-auto px-8">
+            <h2 class="text-3xl gold-text mb-16 uppercase text-center tracking-[0.3em]">Saberes do Grimório</h2>
+            
+            <div class="teaching-block reveal">
+                <p class="text-lg text-gray-300 italic mb-4">"O uso dos pós na magia simpática baseia-se na lei do contágio: a essência da planta ou do mineral, reduzida à sua forma mais ínfima, expande sua influência por onde é espalhada."</p>
+                <span class="text-[9px] uppercase tracking-widest text-gold-primary/30">— Tratado das Ervas e Pós Mágicos</span>
+            </div>
+
+            <div class="teaching-block reveal" style="transition-delay: 0.2s;">
+                <p class="text-lg text-gray-300 italic mb-4">"Soprar um pó em direção ao Leste é dar asas à sua vontade; enterrá-lo na soleira é prender a proteção à sua casa."</p>
+                <span class="text-[9px] uppercase tracking-widest text-gold-primary/30">— Tradição de Feitiçaria de Campina</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-44 text-center px-6">
+        <h2 class="text-4xl md:text-6xl gold-text mb-14 uppercase tracking-tighter">Manifeste sua Vontade</h2>
+        <p class="max-w-2xl mx-auto text-gray-500 font-light text-sm mb-20 leading-loose">
+            Os Pós Mágicos podem ser adquiridos individualmente ou de forma personalizada. Adriana canaliza a mistura exata para o seu propósito, garantindo eficácia energética e respeito espiritual.
+        </p>
+        
+        <a href="https://wa.me/SEU_NUMERO_AQUI?text=Olá! Gostaria de saber mais sobre os Pós Artesanais personalizados." 
+           class="inline-block px-14 py-7 btn-ritual text-[10px] uppercase font-bold">
+            Consultar Ateliê
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 text-center opacity-30 border-t border-gold-primary/5">
+        <p class="text-[10px] uppercase tracking-[0.8em] mb-8">Nythra Ateliê • Sigilo • Fundamento • Ética</p>
+        <div class="flex justify-center space-x-8 text-[9px] uppercase tracking-widest">
+            <a href="index.html" class="hover:text-gold-primary transition-colors">Voltar ao Portal</a>
+            <a href="banhos.html" class="hover:text-gold-primary transition-colors">Banhos</a>
+            <a href="oleos.html" class="hover:text-gold-primary transition-colors">Próximo: Óleos</a>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "all 1s cubic-bezier(0.22, 1, 0.36, 1)";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

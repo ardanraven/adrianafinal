@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oráculos | Nythra Ateliê</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/DHYthgDk/Design-sem-nome.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --gold-primary: #D4AF37;
+            --gold-light: #F9E498;
+            --gold-dark: #996515;
+            --bg-black: #030303;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: #d4d4d4;
+            font-family: 'Cormorant Garamond', serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .nav-item {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .gold-text {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 8s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .noise {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Card de Produto/Serviço */
+        .product-card {
+            background: linear-gradient(180deg, rgba(15,15,15,0.9) 0%, rgba(5,5,5,1) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .product-card:hover {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);
+            transform: translateY(-10px);
+        }
+
+        .product-image-container {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s ease;
+            filter: sepia(0.3) contrast(1.1);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.08);
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(3,3,3,0.9) 0%, transparent 60%);
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold-primary);
+            margin: 20px auto;
+            opacity: 0.5;
+        }
+
+        .btn-consult {
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+            letter-spacing: 0.2em;
+            transition: all 0.4s ease;
+        }
+
+        .btn-consult:hover {
+            background: var(--gold-primary);
+            color: black;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .float { animation: float-anim 6s ease-in-out infinite; }
+        @keyframes float-anim {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+
+    <!-- Navegação Superior -->
+    <nav class="fixed top-0 w-full z-50 bg-black/95 border-b border-gold-primary/10 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-8 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center group">
+                <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" alt="Nythra Logo" class="w-12 h-12 object-contain mix-blend-lighten">
+                <span class="ml-4 text-lg font-bold gold-text tracking-widest uppercase">Nythra</span>
+            </a>
+            
+            <div class="hidden lg:flex items-center space-x-10 text-[10px] uppercase tracking-[0.3em] font-light">
+                <a href="index.html" class="hover:text-gold-light transition-colors">Início</a>
+                <a href="index.html#rituais" class="hover:text-gold-light transition-colors">Rituais</a>
+                <a href="index.html#alquimia" class="hover:text-gold-light transition-colors">Alquimia</a>
+                <a href="https://wa.me/SEU_NUMERO_AQUI" class="px-5 py-2 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-black transition-all">WhatsApp</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Cabeçalho da Categoria -->
+    <header class="pt-44 pb-20 text-center px-4 relative">
+        <div class="absolute top-20 left-1/2 -translate-x-1/2 opacity-10">
+            <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" class="w-64 h-64 float">
+        </div>
+        <h1 class="text-5xl md:text-7xl font-black gold-text mb-6 uppercase tracking-tight relative z-10">Sussurros do Destino</h1>
+        <p class="text-gold-primary/50 tracking-[0.6em] uppercase text-xs mb-4">Artes Oraculares & Orientação Espiritual</p>
+        <div class="divider"></div>
+        <p class="max-w-2xl mx-auto text-gray-400 font-light italic text-lg mt-8">
+            "Nas encruzilhadas da vida, os antigos símbolos revelam os caminhos que os olhos comuns não podem ver."
+        </p>
+    </header>
+
+    <!-- Galeria de Oráculos -->
+    <main class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            
+            <!-- Oráculo das Bruxas -->
+            <article class="product-card reveal">
+                <div class="product-image-container">
+                    <img src="https://i.ibb.co/ns45BCCH/Whats-App-Image-2025-12-26-at-18-46-19.jpg" alt="Oráculo das Bruxas" class="product-image">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="p-8 text-center">
+                    <h3 class="text-2xl gold-text mb-4 uppercase tracking-wider">Oráculo das Bruxas</h3>
+                    <p class="text-gray-400 font-light text-sm mb-8 leading-relaxed italic">
+                        Uma leitura focada nas energias femininas sagradas e no poder dos elementos. Ideal para quem busca autoconhecimento e conexão com a intuição.
+                    </p>
+                    <a href="https://wa.me/SEU_NUMERO_AQUI?text=Olá! Gostaria de agendar uma consulta com o Oráculo das Bruxas." class="inline-block px-8 py-3 btn-consult text-[10px] uppercase font-bold">Agendar Leitura</a>
+                </div>
+            </article>
+
+            <!-- Oráculo de Ossos -->
+            <article class="product-card reveal" style="transition-delay: 0.2s;">
+                <div class="product-image-container">
+                    <img src="https://i.ibb.co/mV9pNtqf/Whats-App-Image-2025-12-26-at-18-46-51.jpg" alt="Oráculo de Ossos" class="product-image">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="p-8 text-center">
+                    <h3 class="text-2xl gold-text mb-4 uppercase tracking-wider">Osteomancia</h3>
+                    <p class="text-gray-400 font-light text-sm mb-8 leading-relaxed italic">
+                        A voz dos ancestrais manifestada através dos ossos. Uma arte milenar para questões profundas de estrutura, destino e herança espiritual.
+                    </p>
+                    <a href="https://wa.me/SEU_NUMERO_AQUI?text=Olá! Gostaria de agendar uma consulta de Osteomancia (Ossos)." class="inline-block px-8 py-3 btn-consult text-[10px] uppercase font-bold">Ouvir os Ancestrais</a>
+                </div>
+            </article>
+
+            <!-- Runas das Bruxas -->
+            <article class="product-card reveal" style="transition-delay: 0.4s;">
+                <div class="product-image-container">
+                    <img src="https://i.ibb.co/G47FN2Jk/Whats-App-Image-2025-12-26-at-18-47-13.jpg" alt="Runas das Bruxas" class="product-image">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="p-8 text-center">
+                    <h3 class="text-2xl gold-text mb-4 uppercase tracking-wider">Runas das Bruxas</h3>
+                    <p class="text-gray-400 font-light text-sm mb-8 leading-relaxed italic">
+                        Símbolos cravados na natureza para respostas rápidas e orientações diretas. Excelente para clareza em situações cotidianas e decisões imediatas.
+                    </p>
+                    <a href="https://wa.me/SEU_NUMERO_AQUI?text=Olá! Gostaria de uma leitura com as Runas das Bruxas." class="inline-block px-8 py-3 btn-consult text-[10px] uppercase font-bold">Lançar as Runas</a>
+                </div>
+            </article>
+
+        </div>
+    </main>
+
+    <!-- Seção de Sigilo -->
+    <section class="py-20 bg-zinc-950/50 border-y border-gold-primary/5">
+        <div class="max-w-3xl mx-auto px-6 text-center">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" class="mx-auto mb-8 text-gold-primary/40">
+                <path d="M12 15V17M12 7V11M8 21H16C18.2091 21 20 19.2091 20 17V7C20 4.79086 18.2091 3 16 3H8C5.79086 3 4 4.79086 4 7V17C4 19.2091 5.79086 21 8 21Z" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+            <h2 class="text-2xl gold-text mb-6 uppercase">Ética e Sigilo</h2>
+            <p class="text-gray-500 font-light leading-relaxed">
+                Todas as consultas no Nythra Ateliê são realizadas sob rigoroso sigilo ético. O ambiente é preparado ritualisticamente para garantir que a orientação seja entregue com clareza, fundamento e profundo respeito à sua jornada.
+            </p>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="py-20 text-center opacity-40">
+        <p class="text-[10px] uppercase tracking-[0.5em]">Nythra Ateliê © 2025 • Sob o comando de Adriana</p>
+        <a href="index.html" class="inline-block mt-8 text-gold-primary hover:text-white transition-colors text-[10px] uppercase tracking-widest border-b border-gold-primary/20 pb-1">Voltar ao Templo</a>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "all 1s cubic-bezier(0.22, 1, 0.36, 1)";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velas Artesanais | Nythra Ateliê</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/DHYthgDk/Design-sem-nome.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold-primary: #D4AF37;
+            --gold-light: #F9E498;
+            --gold-dark: #996515;
+            --bg-black: #030303;
+            --fire-glow: rgba(212, 175, 55, 0.2);
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: #d4d4d4;
+            font-family: 'Cormorant Garamond', serif;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .nav-item {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+
+        .gold-text {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 8s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .noise {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        /* Moldura de Chama */
+        .candle-frame {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            padding: 15px;
+            background: rgba(10, 10, 10, 0.5);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.05);
+        }
+
+        .main-img {
+            width: 100%;
+            height: auto;
+            filter: contrast(1.1) brightness(0.9);
+            transition: all 1s ease;
+        }
+
+        .mystic-card {
+            background: linear-gradient(180deg, rgba(15,15,15,0.8) 0%, rgba(5,5,5,1) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.08);
+            padding: 50px 30px;
+            transition: all 0.6s ease;
+        }
+
+        .mystic-card:hover {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 30px var(--fire-glow);
+        }
+
+        .study-block {
+            border-left: 1px solid var(--gold-primary);
+            padding-left: 25px;
+            margin: 30px 0;
+            opacity: 0.8;
+        }
+
+        .flame-bullet {
+            width: 8px;
+            height: 12px;
+            background: var(--gold-primary);
+            clip-path: ellipse(50% 50% at 50% 50%);
+            border-radius: 50% 50% 20% 20%;
+            display: inline-block;
+            margin-right: 15px;
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 10px var(--gold-primary); }
+        }
+
+        .btn-ignite {
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+            letter-spacing: 0.4em;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            background: transparent;
+        }
+
+        .btn-ignite:hover {
+            background: var(--gold-primary);
+            color: black;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .float { animation: float-anim 6s ease-in-out infinite; }
+        @keyframes float-anim {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+
+    <!-- Navegação -->
+    <nav class="fixed top-0 w-full z-50 bg-black/95 border-b border-gold-primary/10 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-8 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center group">
+                <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" alt="Nythra Logo" class="w-12 h-12 object-contain mix-blend-lighten">
+                <span class="ml-4 text-lg font-bold gold-text tracking-widest uppercase">Nythra</span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-10 text-[10px] uppercase tracking-[0.3em] font-light">
+                <a href="index.html" class="hover:text-gold-light transition-colors">Início</a>
+                <a href="oraculos.html" class="hover:text-gold-light transition-colors">Oráculos</a>
+                <a href="oleos.html" class="hover:text-gold-light transition-colors">Óleos</a>
+                <a href="https://wa.me/SEU_NUMERO_AQUI" class="px-5 py-2 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-black transition-all">Encomendar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-48 pb-20 text-center px-4 relative">
+        <div class="absolute top-24 left-1/2 -translate-x-1/2 opacity-5 w-full">
+            <h2 class="text-[12vw] font-black uppercase tracking-tighter leading-none select-none">Transmutação</h2>
+        </div>
+
+        <div class="relative z-10">
+            <p class="text-gold-primary/50 tracking-[1em] uppercase text-[9px] mb-6">O Elemento Fogo & A Vontade Manifesta</p>
+            <h1 class="text-5xl md:text-7xl font-black gold-text mb-12 uppercase tracking-tight">Velas Artesanais</h1>
+            
+            <div class="candle-frame reveal">
+                <img src="https://i.ibb.co/RkSXyc0t/Whats-App-Image-2025-12-26-at-19-05-05.jpg" alt="Velas Sagradas Nythra" class="main-img">
+            </div>
+        </div>
+    </header>
+
+    <!-- Citação de Abertura -->
+    <section class="max-w-4xl mx-auto px-6 py-20 text-center reveal">
+        <p class="text-2xl md:text-4xl text-gold-light font-light italic leading-snug">
+            "A vela é um pilar de luz que une a terra ao céu. Em sua chama, o desejo torna-se espírito e a matéria torna-se magia."
+        </p>
+        <div class="w-16 h-px bg-gold-primary mx-auto mt-12 opacity-40"></div>
+    </section>
+
+    <!-- Texto Principal da Adriana -->
+    <section class="max-w-6xl mx-auto px-6 py-20">
+        <div class="grid lg:grid-cols-2 gap-24 items-center">
+            <div class="space-y-10 reveal">
+                <h2 class="text-4xl gold-text uppercase">O Poder do Pavio e da Cera</h2>
+                <div class="space-y-6 text-gray-300 font-light leading-relaxed text-lg italic">
+                    <p>
+                        Mais do que luz e perfume, uma vela intencionada é uma ferramenta de poder. No Nythra Ateliê, acreditamos que o fogo é o elemento da transmutação, capaz de levar nossos desejos do plano físico ao espiritual.
+                    </p>
+                    <p class="text-gray-400 not-italic">
+                        Nossas velas não são produzidas em série; elas são consagradas. Cada unidade é vertida à mão, unindo ervas, óleos essenciais e a energia necessária para manifestar a sua vontade.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mystic-card reveal" style="transition-delay: 0.2s;">
+                <h3 class="text-xl gold-text uppercase tracking-widest mb-10 text-center">Finalidades Sagradas</h3>
+                <div class="grid grid-cols-2 gap-6 text-sm">
+                    <div class="flex items-center"><span class="flame-bullet"></span> Limpeza</div>
+                    <div class="flex items-center"><span class="flame-bullet"></span> Proteção</div>
+                    <div class="flex items-center"><span class="flame-bullet"></span> Exorcismo</div>
+                    <div class="flex items-center"><span class="flame-bullet"></span> Cura</div>
+                    <div class="flex items-center"><span class="flame-bullet"></span> Banimento</div>
+                    <div class="flex items-center"><span class="flame-bullet"></span> Prosperidade</div>
+                    <div class="flex items-center"><span class="flame-bullet"></span> Amor</div>
+                    <div class="flex items-center"><span class="flame-bullet"></span> Clareza Mental</div>
+                </div>
+                <p class="mt-12 text-center text-[10px] text-gold-primary/50 uppercase tracking-[0.3em]">Encomendas personalizadas sob consulta</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sabedoria e Passagens -->
+    <section class="bg-zinc-950/40 py-32 border-y border-gold-primary/5">
+        <div class="max-w-5xl mx-auto px-8">
+            <h2 class="text-3xl gold-text mb-16 uppercase text-center tracking-[0.4em]">Tratado das Chamas</h2>
+            
+            <div class="grid md:grid-cols-2 gap-16">
+                <div class="reveal">
+                    <h4 class="text-gold-light uppercase text-sm tracking-widest mb-6">O Estudo da Licnomancia</h4>
+                    <div class="study-block">
+                        <p class="text-gray-400 font-light leading-relaxed mb-4">"Observe o pulsar da chama: uma chama alta e brilhante indica uma energia forte e desimpedida; uma chama que estala comunica a resistência que está sendo quebrada."</p>
+                        <span class="text-[9px] uppercase tracking-widest text-gray-600">— Antigos Saberes Ocultos</span>
+                    </div>
+                </div>
+
+                <div class="reveal" style="transition-delay: 0.2s;">
+                    <h4 class="text-gold-light uppercase text-sm tracking-widest mb-6">A Linguagem das Cores</h4>
+                    <div class="study-block">
+                        <p class="text-gray-400 font-light leading-relaxed mb-4">"O preto não é ausência, mas o vácuo que absorve a negatividade. O branco é o prisma que contém todas as curas. O vermelho é o sangue da terra que pulsa a ação."</p>
+                        <span class="text-[9px] uppercase tracking-widest text-gray-600">— Do 'Grimório das Luzes'</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-20 p-10 border border-gold-primary/10 text-center reveal">
+                <p class="text-xl italic font-light text-gray-300">
+                    "Hécate, Senhora das Tochas, ilumina os caminhos escuros e guia a alma através do fogo que não queima, mas transforma."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Usos das Velas -->
+    <section class="py-32 max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-2xl gold-text mb-12 uppercase tracking-widest">Usos Ritualísticos</h2>
+        <div class="space-y-8 text-gray-400 font-light leading-relaxed">
+            <p>As velas do Ateliê podem ser usadas em <strong>firmezas de proteção</strong>, em <strong>rituais de descarrego</strong> para queimar larvas astrais, ou como <strong>foco meditativo</strong> para clareza mental.</p>
+            <p>Ao acender sua vela Nythra, você está ativando um selo de intenção. Recomenda-se sempre fazer uma oração ou encantamento de ativação, conectando seu espírito à chama que agora dança à sua frente.</p>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-44 text-center px-6">
+        <h2 class="text-4xl md:text-6xl gold-text mb-14 uppercase tracking-tighter">Acenda sua Vontade</h2>
+        <p class="max-w-2xl mx-auto text-gold-primary/40 uppercase tracking-[0.5em] text-[10px] mb-20 leading-loose">
+            Precisa de uma vela para uma finalidade específica?<br>Adriana consagra e prepara a ferramenta ideal para o seu ritual.
+        </p>
+        
+        <a href="https://wa.me/SEU_NUMERO_AQUI?text=Olá! Gostaria de encomendar uma vela artesanal personalizada com intenção." 
+           class="inline-block px-14 py-7 btn-ignite text-[10px] uppercase font-bold">
+            Consagrar minha Vela
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 text-center opacity-30 border-t border-gold-primary/5">
+        <p class="text-[10px] uppercase tracking-[0.8em] mb-8">Nythra Ateliê • Onde a Matéria se torna Magia</p>
+        <div class="flex justify-center space-x-8 text-[9px] uppercase tracking-widest">
+            <a href="index.html" class="hover:text-gold-primary transition-colors">Portal Principal</a>
+            <a href="oleos.html" class="hover:text-gold-primary transition-colors">Óleos</a>
+            <a href="poppets.html" class="hover:text-gold-primary transition-colors">Próximo: Poppets</a>
+        </div>
+    </footer>
+
+    <script>
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "all 1.2s cubic-bezier(0.22, 1, 0.36, 1)";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
