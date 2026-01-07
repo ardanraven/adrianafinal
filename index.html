@@ -23,6 +23,7 @@
             font-family: 'Cormorant Garamond', serif;
             scroll-behavior: smooth;
             overflow-x: hidden;
+            width: 100%;
         }
 
         h1, h2, h3, .nav-item {
@@ -52,11 +53,13 @@
             50% { transform: translateY(-15px); }
         }
 
-        .glow-pulse { animation: glow-anim 4s ease-in-out infinite; }
-        @keyframes glow-anim {
-            0%, 100% { filter: drop-shadow(0 0 5px var(--gold-primary)); opacity: 0.8; }
-            50% { filter: drop-shadow(0 0 20px var(--gold-primary)); opacity: 1; }
+        /* Efeito de brilho sutil para a logo principal */
+        .glow-soft { 
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2));
+            opacity: 0.95;
+            transition: opacity 0.5s ease;
         }
+        .glow-soft:hover { opacity: 1; }
 
         .rotate-center {
             transform-origin: center;
@@ -68,19 +71,25 @@
         }
 
         .section-container {
-            padding: 140px 20px;
+            padding: 80px 20px;
             max-width: 1100px;
             margin: 0 auto;
             position: relative;
+        }
+        @media (min-width: 768px) {
+            .section-container { padding: 140px 20px; }
         }
 
         .altar-card {
             background: linear-gradient(180deg, rgba(10,10,10,0.8) 0%, rgba(3,3,3,1) 100%);
             border: 1px solid rgba(212, 175, 55, 0.08);
-            padding: 70px 45px;
+            padding: 40px 25px;
             position: relative;
             transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
             display: block; 
+        }
+        @media (min-width: 768px) {
+            .altar-card { padding: 70px 45px; }
         }
 
         .altar-card:hover {
@@ -91,13 +100,16 @@
 
         .quote-block {
             font-style: italic;
-            font-size: 1.7rem;
+            font-size: 1.2rem;
             color: var(--gold-light);
             text-align: center;
-            padding: 150px 20px;
+            padding: 100px 20px;
             letter-spacing: 0.05em;
             position: relative;
             line-height: 1.4;
+        }
+        @media (min-width: 768px) {
+            .quote-block { font-size: 1.7rem; padding: 150px 20px; }
         }
 
         .quote-block::before, .quote-block::after {
@@ -106,8 +118,11 @@
             left: 50%;
             transform: translateX(-50%);
             width: 1px;
-            height: 80px;
+            height: 60px;
             background: linear-gradient(to bottom, transparent, var(--gold-primary));
+        }
+        @media (min-width: 768px) {
+            .quote-block::before, .quote-block::after { height: 80px; }
         }
         .quote-block::before { top: 0; }
         .quote-block::after { bottom: 0; background: linear-gradient(to top, transparent, var(--gold-primary)); }
@@ -131,19 +146,19 @@
         }
     </style>
 </head>
-<body>
+<body class="overflow-x-hidden">
     <div class="noise"></div>
 
     <!-- Navegação Superior -->
     <nav class="fixed top-0 w-full z-50 bg-black/95 border-b border-gold-primary/10 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-8 h-20 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex justify-between items-center">
             <a href="index.html" class="flex items-center group">
-                <div class="relative w-16 h-16 flex items-center justify-center">
+                <div class="relative w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
                     <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" 
                          alt="Nythra Logo" 
                          class="w-full h-full object-contain logo-display">
                 </div>
-                <span class="ml-4 text-xl font-bold gold-text tracking-widest uppercase">Nythra</span>
+                <span class="ml-2 sm:ml-4 text-sm sm:text-xl font-bold gold-text tracking-widest uppercase">Nythra</span>
             </a>
             
             <div class="hidden lg:flex items-center space-x-12 text-[10px] uppercase tracking-[0.3em] font-light">
@@ -152,29 +167,34 @@
                 <a href="#alquimia" class="hover:text-gold-light transition-colors nav-item">Alquimia</a>
                 <a href="https://wa.me/SEU_NUMERO_AQUI" class="px-6 py-2 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-black transition-all">Consulta</a>
             </div>
+            
+            <div class="lg:hidden">
+                <a href="https://wa.me/SEU_NUMERO_AQUI" class="text-[10px] border border-gold-primary px-3 py-1 text-gold-primary uppercase tracking-widest">Contato</a>
+            </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="min-h-screen flex flex-col items-center justify-center pt-20 text-center px-4 relative overflow-hidden">
+    <!-- Hero: O Portal Sagrado -->
+    <section class="min-h-screen flex flex-col items-center justify-center pt-24 text-center px-6 relative overflow-hidden">
         <div class="mb-4 relative">
-            <div class="relative w-80 h-80 md:w-[480px] md:h-[480px] float flex items-center justify-center">
-                <div class="absolute inset-24 bg-gold-primary/10 rounded-full blur-[110px] animate-pulse"></div>
-                <div class="absolute inset-0 border border-gold-primary/15 rounded-full rotate-center"></div>
-                <div class="absolute inset-16 border border-gold-primary/10 rounded-full rotate-center" style="animation-direction: reverse; animation-duration: 50s;"></div>
-                <div class="absolute inset-32 border border-gold-primary/5 rounded-full rotate-center" style="animation-duration: 70s;"></div>
+            <!-- Container limpo para a logo sem órbitas brancas -->
+            <div class="relative w-64 h-64 sm:w-80 sm:h-80 md:w-[480px] md:h-[480px] float flex items-center justify-center">
+                <!-- Aura dourada sutil de fundo -->
+                <div class="absolute inset-16 sm:inset-24 bg-gold-primary/5 rounded-full blur-[60px] sm:blur-[110px]"></div>
+                
+                <!-- Logo Pura e Flutuante -->
                 <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" 
                      alt="Selo Sagrado Nythra" 
-                     class="w-full h-full object-contain logo-display glow-pulse relative z-10">
+                     class="w-full h-full object-contain logo-display glow-soft relative z-10">
             </div>
         </div>
         
-        <h1 class="text-6xl md:text-8xl font-black gold-text mb-6 uppercase tracking-tight">Nythra Ateliê</h1>
-        <p class="text-md md:text-xl font-light tracking-[0.7em] text-gold-primary/50 max-w-4xl mx-auto uppercase mb-12">
+        <h1 class="text-4xl sm:text-6xl md:text-8xl font-black gold-text mb-6 uppercase tracking-tight break-words max-w-full">Nythra Ateliê</h1>
+        <p class="text-[10px] sm:text-md md:text-xl font-light tracking-[0.4em] sm:tracking-[0.7em] text-gold-primary/50 max-w-4xl mx-auto uppercase mb-12 px-4">
             Acolhimento • Orientação • Transmutação
         </p>
         
-        <svg viewBox="0 0 200 20" class="divider-svg">
+        <svg viewBox="0 0 200 20" class="divider-svg px-10 sm:px-0">
             <path d="M0 10 L80 10 M120 10 L200 10 M90 10 L110 10" stroke="currentColor" stroke-width="0.5" fill="none"/>
             <circle cx="100" cy="10" r="3" fill="currentColor"/>
         </svg>
@@ -183,29 +203,29 @@
     <!-- Citações Hécate -->
     <div class="quote-block reveal">
         "Eu sou a Guardiã das Chaves, aquela que ilumina as encruzilhadas da alma e abre os portais da sabedoria esquecida."<br>
-        <span class="text-xs uppercase tracking-[0.4em] font-light mt-8 block text-gold-primary/40">— Hécate Brimo</span>
+        <span class="text-[10px] uppercase tracking-[0.4em] font-light mt-8 block text-gold-primary/40">— Hécate Brimo</span>
     </div>
 
     <!-- Seção: A Guardiã (Adriana) -->
     <section class="section-container reveal">
-        <div class="flex flex-col md:flex-row items-center gap-24">
-            <div class="w-full md:w-1/2">
-                <h2 class="text-4xl gold-text mb-10">A Guardiã do Templo</h2>
-                <p class="text-2xl leading-relaxed font-light text-gray-300 mb-8 italic">
+        <div class="flex flex-col md:flex-row items-center gap-12 sm:gap-24">
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <h2 class="text-3xl sm:text-4xl gold-text mb-6 sm:mb-10 uppercase">A Guardiã do Templo</h2>
+                <p class="text-xl sm:text-2xl leading-relaxed font-light text-gray-300 mb-6 sm:mb-8 italic">
                     Conduzido por <strong>Adriana</strong>, taróloga, médium e terapeuta integrativa com mais de 20 anos de sacerdócio místico.
                 </p>
-                <p class="text-gray-400 font-light leading-relaxed text-lg">
+                <p class="text-gray-400 font-light leading-relaxed text-base sm:text-lg">
                     O Nythra Ateliê não é apenas um espaço de consultas, mas um santuário de ética e fundamento. Adriana une sua sensibilidade mediúnica ao rigor técnico das artes oraculares para guiar sua transformação com sigilo e profundo respeito às forças ancestrais.
                 </p>
             </div>
-            <div class="w-full md:w-1/2 flex justify-center">
-                <div class="relative w-80 h-80 flex items-center justify-center">
+            <div class="w-full md:w-1/2 flex justify-center order-first md:order-last">
+                <div class="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center">
                     <!-- Moldura Mística com Órbitas -->
                     <div class="absolute inset-0 border border-gold-primary/20 rounded-full rotate-center"></div>
                     <div class="absolute inset-4 border border-gold-primary/10 rounded-full rotate-center" style="animation-direction: reverse; animation-duration: 25s;"></div>
                     
                     <!-- Foto da Adriana em Moldura Circular -->
-                    <div class="relative w-64 h-64 rounded-full border-2 border-gold-primary/30 p-2 overflow-hidden glow-pulse">
+                    <div class="relative w-48 h-48 sm:w-64 sm:h-64 rounded-full border-2 border-gold-primary/30 p-2 overflow-hidden">
                         <div class="w-full h-full rounded-full overflow-hidden border border-gold-primary/50 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
                             <img src="https://i.ibb.co/TBmM0hVw/adriana.jpg" 
                                  alt="Adriana - Guardiã do Nythra Ateliê" 
@@ -219,142 +239,152 @@
 
     <!-- Secção: Oráculos -->
     <section id="oraculos" class="section-container">
-        <div class="text-center mb-28 reveal">
-            <h2 class="text-5xl gold-text mb-8 tracking-tighter uppercase">Consultas Oraculares</h2>
-            <p class="text-gold-primary/30 uppercase tracking-[0.6em] text-xs">Onde o destino se revela através do sagrado</p>
+        <div class="text-center mb-16 sm:mb-28 reveal">
+            <h2 class="text-3xl sm:text-5xl gold-text mb-6 sm:mb-8 tracking-tighter uppercase">Consultas Oraculares</h2>
+            <p class="text-gold-primary/30 uppercase tracking-[0.3em] sm:tracking-[0.6em] text-[10px]">Onde o destino se revela através do sagrado</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
             <a href="oraculos.html" class="altar-card text-center reveal">
-                <div class="mb-12 h-24 flex items-center justify-center">
-                    <svg width="60" height="90" viewBox="0 0 60 90" class="float">
+                <div class="mb-8 sm:mb-12 h-20 sm:h-24 flex items-center justify-center">
+                    <svg width="40" height="60" sm:width="60" sm:height="90" viewBox="0 0 60 90" class="float">
                         <rect x="5" y="5" width="50" height="80" rx="2" stroke="var(--gold-primary)" stroke-width="1" />
-                        <path d="M30 20 L45 45 L30 70 L15 45 Z" fill="var(--gold-primary)" opacity="0.1" />
-                        <circle cx="30" cy="45" r="5" fill="var(--gold-primary)" class="glow-pulse" />
+                        <circle cx="30" cy="45" r="5" fill="var(--gold-primary)" />
                     </svg>
                 </div>
-                <h3 class="text-2xl gold-text mb-6">Artes Oraculares</h3>
-                <p class="text-gray-500 font-light italic leading-relaxed">Clique para ver nossas leituras de Tarot, Runas e Osteomancia.</p>
+                <h3 class="text-xl sm:text-2xl gold-text mb-4 sm:mb-6 uppercase">Artes Oraculares</h3>
+                <p class="text-gray-500 font-light italic leading-relaxed text-sm sm:text-base">Clique para ver nossas leituras de Tarot, Runas e Osteomancia.</p>
             </a>
 
             <div class="hidden md:flex items-center justify-center opacity-10">
                 <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" class="w-40 rotate-center">
             </div>
 
-            <div class="altar-card text-center reveal" style="transition-delay: 0.4s;">
-                <div class="mb-12 h-24 flex items-center justify-center">
-                    <svg width="85" height="85" viewBox="0 0 100 100">
+            <div class="altar-card text-center reveal" style="transition-delay: 0.2s;">
+                <div class="mb-8 sm:mb-12 h-20 sm:h-24 flex items-center justify-center">
+                    <svg width="60" height="60" sm:width="85" sm:height="85" viewBox="0 0 100 100">
                         <path d="M20 40 Q50 0 80 40 M20 60 Q50 100 80 60" stroke="var(--gold-primary)" stroke-width="0.8" opacity="0.6"/>
-                        <circle cx="50" cy="50" r="4" fill="var(--gold-primary)" class="glow-pulse" />
+                        <circle cx="50" cy="50" r="4" fill="var(--gold-primary)" />
                     </svg>
                 </div>
-                <h3 class="text-2xl gold-text mb-6">Ética Oracular</h3>
-                <p class="text-gray-500 font-light italic leading-relaxed">Sigilo absoluto e fundamento técnico em cada mensagem revelada.</p>
+                <h3 class="text-xl sm:text-2xl gold-text mb-4 sm:mb-6 uppercase">Ética Oracular</h3>
+                <p class="text-gray-500 font-light italic leading-relaxed text-sm sm:text-base">Sigilo absoluto e fundamento técnico em cada mensagem revelada.</p>
             </div>
         </div>
     </section>
 
     <!-- Secção: Alquimia -->
     <section id="alquimia" class="section-container">
-        <div class="text-center mb-28 reveal">
-            <h2 class="text-5xl gold-text mb-8 uppercase">Alquimia do Nythra</h2>
-            <p class="text-gold-primary/30 uppercase tracking-[0.6em] text-xs">A essência da terra impregnada de intenção</p>
+        <div class="text-center mb-16 sm:mb-28 reveal">
+            <h2 class="text-3xl sm:text-5xl gold-text mb-6 sm:mb-8 uppercase">Alquimia do Nythra</h2>
+            <p class="text-gold-primary/30 uppercase tracking-[0.3em] sm:tracking-[0.6em] text-[10px]">A essência da terra impregnada de intenção</p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-10">
             <a href="banhos.html" class="altar-card text-center reveal">
-                <svg width="65" height="65" viewBox="0 0 100 100" class="mx-auto mb-8">
-                    <circle cx="50" cy="50" r="42" stroke="var(--gold-primary)" stroke-width="0.8" stroke-dasharray="5 5" />
-                    <path d="M50 30 C40 30 30 45 30 55 C30 68 40 75 50 75 C60 75 70 68 70 55 C70 45 60 30 50 30Z" stroke="var(--gold-primary)" stroke-width="1.2" fill="rgba(212,175,55,0.05)"/>
-                </svg>
-                <h3 class="text-xl gold-text uppercase mb-4">Banhos Espirituais</h3>
-                <p class="text-xs text-gray-500 font-light">Purificação e renovação do campo áurico.</p>
+                <div class="mb-4 sm:mb-8 flex justify-center">
+                    <svg width="40" height="40" sm:width="65" sm:height="65" viewBox="0 0 100 100" class="mx-auto">
+                        <circle cx="50" cy="50" r="42" stroke="var(--gold-primary)" stroke-width="0.8" stroke-dasharray="5 5" />
+                        <path d="M50 30 C40 30 30 45 30 55 C30 68 40 75 50 75 C60 75 70 68 70 55 C70 45 60 30 50 30Z" stroke="var(--gold-primary)" stroke-width="1.2" fill="rgba(212,175,55,0.05)"/>
+                    </svg>
+                </div>
+                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2">Banhos Espirituais</h3>
+                <p class="text-[8px] sm:text-xs text-gray-500 font-light hidden sm:block">Purificação e renovação do campo áurico.</p>
             </a>
 
             <a href="pos.html" class="altar-card text-center reveal" style="transition-delay: 0.1s;">
-                <svg width="45" height="65" viewBox="0 0 50 70" class="mx-auto mb-8">
-                    <path d="M5 65 L45 65 L25 10 Z" stroke="var(--gold-primary)" stroke-width="1" fill="none"/>
-                    <circle cx="25" cy="45" r="3" fill="var(--gold-primary)" class="glow-pulse" />
-                </svg>
-                <h3 class="text-xl gold-text uppercase mb-4">Pós Artesanais</h3>
-                <p class="text-xs text-gray-500 font-light">Pós de projeção e encantamento consagrados.</p>
+                <div class="mb-4 sm:mb-8 flex justify-center">
+                    <svg width="30" height="45" sm:width="45" sm:height="65" viewBox="0 0 50 70" class="mx-auto">
+                        <path d="M5 65 L45 65 L25 10 Z" stroke="var(--gold-primary)" stroke-width="1" fill="none"/>
+                    </svg>
+                </div>
+                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2">Pós Artesanais</h3>
+                <p class="text-[8px] sm:text-xs text-gray-500 font-light hidden sm:block">Pós de projeção e encantamento consagrados.</p>
             </a>
 
             <a href="oleos.html" class="altar-card text-center reveal" style="transition-delay: 0.2s;">
-                <svg width="45" height="65" viewBox="0 0 50 70" class="mx-auto mb-8">
-                    <path d="M15 10 H35 V20 L45 35 V65 H5 V35 L15 20 Z" stroke="var(--gold-primary)" stroke-width="1" fill="none"/>
-                    <circle cx="25" cy="45" r="5" fill="var(--gold-primary)" class="glow-pulse" />
-                </svg>
-                <h3 class="text-xl gold-text uppercase mb-4">Óleos Unguentes</h3>
-                <p class="text-xs text-gray-500 font-light">Extratos botânicos para consagração e ritos.</p>
+                <div class="mb-4 sm:mb-8 flex justify-center">
+                    <svg width="30" height="45" sm:width="45" sm:height="65" viewBox="0 0 50 70" class="mx-auto">
+                        <path d="M15 10 H35 V20 L45 35 V65 H5 V35 L15 20 Z" stroke="var(--gold-primary)" stroke-width="1" fill="none"/>
+                    </svg>
+                </div>
+                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2">Óleos Unguentes</h3>
+                <p class="text-[8px] sm:text-xs text-gray-500 font-light hidden sm:block">Extratos botânicos para consagração e ritos.</p>
             </a>
 
             <a href="velas.html" class="altar-card text-center reveal" style="transition-delay: 0.3s;">
-                <svg width="45" height="65" viewBox="0 0 50 70" class="mx-auto mb-8 text-gold-primary">
-                    <rect x="15" y="25" width="20" height="40" stroke="currentColor" fill="none" />
-                    <path d="M25 10 Q28 18 25 25 Q22 18 25 10" fill="currentColor" class="float" />
-                </svg>
-                <h3 class="text-xl gold-text uppercase mb-4">Velas Artesanais</h3>
-                <p class="text-xs text-gray-500 font-light">Luz e intenção moldadas em cera pura.</p>
+                <div class="mb-4 sm:mb-8 flex justify-center">
+                    <svg width="30" height="45" sm:width="45" sm:height="65" viewBox="0 0 50 70" class="mx-auto text-gold-primary">
+                        <rect x="15" y="25" width="20" height="40" stroke="currentColor" fill="none" />
+                        <path d="M25 10 Q28 18 25 25 Q22 18 25 10" fill="currentColor" class="float" />
+                    </svg>
+                </div>
+                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2">Velas Artesanais</h3>
+                <p class="text-[8px] sm:text-xs text-gray-500 font-light hidden sm:block">Luz e intenção moldadas em cera pura.</p>
             </a>
 
             <a href="poppets.html" class="altar-card text-center reveal" style="transition-delay: 0.4s;">
-                <svg width="55" height="65" viewBox="0 0 60 70" class="mx-auto mb-8">
-                    <circle cx="30" cy="20" r="10" stroke="var(--gold-primary)" stroke-width="1.2" />
-                    <path d="M30 30 L30 55 M15 40 L45 40 M30 55 L20 65 M30 55 L40 65" stroke="var(--gold-primary)" stroke-width="1" />
-                </svg>
-                <h3 class="text-xl gold-text uppercase mb-4">Poppets</h3>
-                <p class="text-xs text-gray-500 font-light">Bonecos rituais para foco e proteção.</p>
+                <div class="mb-4 sm:mb-8 flex justify-center">
+                    <svg width="35" height="45" sm:width="55" sm:height="65" viewBox="0 0 60 70" class="mx-auto">
+                        <circle cx="30" cy="20" r="10" stroke="var(--gold-primary)" stroke-width="1.2" />
+                        <path d="M30 30 L30 55 M15 40 L45 40" stroke="var(--gold-primary)" stroke-width="1" />
+                    </svg>
+                </div>
+                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2">Poppets</h3>
+                <p class="text-[8px] sm:text-xs text-gray-500 font-light hidden sm:block">Bonecos rituais para foco e proteção.</p>
             </a>
 
             <a href="garrafas.html" class="altar-card text-center reveal" style="transition-delay: 0.5s;">
-                <svg width="45" height="65" viewBox="0 0 50 70" class="mx-auto mb-8">
-                    <rect x="18" y="5" width="14" height="15" rx="1" stroke="var(--gold-primary)" stroke-width="1"/>
-                    <path d="M10 25 Q10 20 25 20 Q40 20 40 25 V60 H10 V25Z" stroke="var(--gold-primary)" stroke-width="1.2" fill="none"/>
-                </svg>
-                <h3 class="text-xl gold-text uppercase mb-4">Garrafadas</h3>
-                <p class="text-xs text-gray-500 font-light">Elixires e filtros de força ancestral.</p>
+                <div class="mb-4 sm:mb-8 flex justify-center">
+                    <svg width="30" height="45" sm:width="45" sm:height="65" viewBox="0 0 50 70" class="mx-auto">
+                        <rect x="18" y="5" width="14" height="15" rx="1" stroke="var(--gold-primary)" stroke-width="1"/>
+                        <path d="M10 25 Q10 20 25 20 Q40 20 40 25 V60 H10 V25Z" stroke="var(--gold-primary)" stroke-width="1.2" fill="none"/>
+                    </svg>
+                </div>
+                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2">Garrafadas</h3>
+                <p class="text-[8px] sm:text-xs text-gray-500 font-light hidden sm:block">Elixires e filtros de força ancestral.</p>
             </a>
 
             <a href="tintas.html" class="altar-card text-center reveal" style="transition-delay: 0.6s;">
-                <svg width="55" height="65" viewBox="0 0 60 70" class="mx-auto mb-8 text-gold-primary">
-                    <path d="M10 50 Q30 65 50 50 V20 H10 Z" stroke="currentColor" fill="none" />
-                    <path d="M30 10 L45 25" stroke="currentColor" stroke-width="2" />
-                </svg>
-                <h3 class="text-xl gold-text uppercase mb-4">Tintas Mágicas</h3>
-                <p class="text-xs text-gray-500 font-light">Pigmentos consagrados para escrita e selos.</p>
+                <div class="mb-4 sm:mb-8 flex justify-center">
+                    <svg width="35" height="45" sm:width="55" sm:height="65" viewBox="0 0 60 70" class="mx-auto text-gold-primary">
+                        <path d="M10 50 Q30 65 50 50 V20 H10 Z" stroke="currentColor" fill="none" />
+                    </svg>
+                </div>
+                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2">Tintas Mágicas</h3>
+                <p class="text-[8px] sm:text-xs text-gray-500 font-light hidden sm:block">Pigmentos consagrados para escrita e selos.</p>
             </a>
 
             <div class="altar-card text-center reveal opacity-40 cursor-default" style="transition-delay: 0.7s;">
-                <div class="h-16 flex items-center justify-center mb-4">
+                <div class="h-12 sm:h-16 flex items-center justify-center mb-2 sm:mb-4">
                     <span class="text-[8px] uppercase tracking-widest text-gold-primary/50">Em Breve</span>
                 </div>
-                <h3 class="text-xl gold-text uppercase mb-4 italic">Novos Artefatos</h3>
+                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2 italic">Novos Artefatos</h3>
             </div>
         </div>
     </section>
 
     <!-- Rodapé -->
-    <footer id="contato" class="py-36 bg-black border-t border-gold-primary/10 relative">
+    <footer id="contato" class="py-20 sm:py-36 bg-black border-t border-gold-primary/10 relative">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h3 class="text-5xl md:text-7xl gold-text mb-14 uppercase tracking-tighter">Atravesse o Limiar</h3>
-            <p class="text-gold-primary/50 tracking-[0.5em] uppercase text-xs mb-20 leading-loose">
+            <h3 class="text-3xl sm:text-7xl gold-text mb-10 sm:mb-14 uppercase tracking-tighter">Atravesse o Limiar</h3>
+            <p class="text-gold-primary/50 tracking-[0.3em] sm:tracking-[0.5em] uppercase text-[10px] mb-12 sm:mb-20 leading-loose">
                 Agende sua orientação sigilosa com Adriana.<br>Um templo onde a magia é praticada com alma.
             </p>
             
-            <a href="https://wa.me/SEU_NUMERO_AQUI" class="inline-block px-16 py-7 border-2 border-gold-primary text-gold-primary font-bold uppercase tracking-[0.6em] hover:bg-gold-primary hover:text-black transition-all duration-1000 shadow-[0_0_30px_rgba(212,175,55,0.1)]">
+            <a href="https://wa.me/SEU_NUMERO_AQUI" class="inline-block px-10 sm:px-16 py-5 sm:py-7 border-2 border-gold-primary text-gold-primary font-bold uppercase text-[10px] sm:text-base tracking-[0.4em] sm:tracking-[0.6em] hover:bg-gold-primary hover:text-black transition-all duration-1000 shadow-[0_0_30px_rgba(212,175,55,0.1)]">
                 Falar com o Ateliê
             </a>
 
-            <div class="mt-32 space-y-6 opacity-30">
-                <p class="text-[10px] uppercase tracking-[0.8em] text-gray-600">Nythra Ateliê • Sigilo Absoluto • Fundamento e Ética</p>
+            <div class="mt-20 sm:mt-32 space-y-4 sm:space-y-6 opacity-30 px-4">
+                <p class="text-[8px] sm:text-[10px] uppercase tracking-[0.4em] sm:tracking-[0.8em] text-gray-600">Nythra Ateliê • Sigilo Absoluto • Fundamento e Ética</p>
                 <div class="h-px w-20 bg-gold-primary mx-auto"></div>
             </div>
         </div>
     </footer>
 
     <script>
-        const observerOptions = { threshold: 0.15 };
+        const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -366,8 +396,8 @@
 
         document.querySelectorAll('.reveal').forEach(el => {
             el.style.opacity = "0";
-            el.style.transform = "translateY(50px)";
-            el.style.transition = "all 1.4s cubic-bezier(0.22, 1, 0.36, 1)";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "all 1s cubic-bezier(0.22, 1, 0.36, 1)";
             observer.observe(el);
         });
     </script>
