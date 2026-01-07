@@ -22,6 +22,7 @@
             font-family: 'Cormorant Garamond', serif;
             scroll-behavior: smooth;
             overflow-x: hidden;
+            width: 100%;
         }
 
         h1, h2, h3, .nav-item {
@@ -68,7 +69,10 @@
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 10px;
+        }
+        @media (min-width: 768px) {
+            .hero-image-frame { padding: 20px; }
         }
 
         .hero-image-frame::before {
@@ -90,36 +94,51 @@
         .quote-section {
             font-style: italic;
             position: relative;
-            padding: 100px 0;
+            padding: 60px 20px;
             text-align: center;
+        }
+        @media (min-width: 768px) {
+            .quote-section { padding: 100px 0; }
         }
 
         .quote-section::before {
             content: "“";
             position: absolute;
-            top: 40px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 8rem;
+            font-size: 5rem;
             color: var(--gold-primary);
             opacity: 0.1;
             font-family: 'Cinzel Decorative';
         }
+        @media (min-width: 768px) {
+            .quote-section::before { font-size: 8rem; top: 40px; }
+        }
 
         .intentions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        @media (min-width: 640px) {
+            .intentions-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 20px;
+            }
         }
 
         .intention-tag {
-            padding: 10px 20px;
+            padding: 8px 12px;
             border: 1px solid rgba(212, 175, 55, 0.1);
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             text-transform: uppercase;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.2em;
             text-align: center;
             transition: all 0.3s ease;
+        }
+        @media (min-width: 768px) {
+            .intention-tag { padding: 10px 20px; font-size: 0.7rem; letter-spacing: 0.3em; }
         }
 
         .intention-tag:hover {
@@ -135,36 +154,40 @@
         }
     </style>
 </head>
-<body>
+<body class="overflow-x-hidden">
     <div class="noise"></div>
 
     <!-- Navegação -->
     <nav class="fixed top-0 w-full z-50 bg-black/95 border-b border-gold-primary/10 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-8 h-20 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex justify-between items-center">
             <a href="index.html" class="flex items-center group">
-                <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" alt="Nythra Logo" class="w-12 h-12 object-contain mix-blend-lighten">
-                <span class="ml-4 text-lg font-bold gold-text tracking-widest uppercase">Nythra</span>
+                <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" alt="Nythra Logo" class="w-10 h-10 sm:w-12 sm:h-12 object-contain mix-blend-lighten">
+                <span class="ml-2 sm:ml-4 text-sm sm:text-lg font-bold gold-text tracking-widest uppercase">Nythra</span>
             </a>
             <div class="hidden lg:flex items-center space-x-10 text-[10px] uppercase tracking-[0.3em] font-light">
                 <a href="index.html" class="hover:text-gold-light transition-colors">Portal Principal</a>
                 <a href="oraculos.html" class="hover:text-gold-light transition-colors">Oráculos</a>
-                <a href="https://wa.me/SEU_NUMERO_AQUI" class="px-5 py-2 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-black transition-all">Consagrar Banho</a>
+                <a href="https://wa.me/SEU_NUMERO_AQUI" class="px-5 py-2 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-black transition-all">Consagrar</a>
+            </div>
+            <!-- Botão mobile simples -->
+            <div class="lg:hidden">
+                <a href="https://wa.me/SEU_NUMERO_AQUI" class="text-[9px] border border-gold-primary px-3 py-1 text-gold-primary uppercase tracking-widest">Contato</a>
             </div>
         </div>
     </nav>
 
     <!-- Header Grandioso -->
-    <header class="pt-48 pb-20 text-center px-4 overflow-hidden relative">
+    <header class="pt-32 sm:pt-48 pb-10 sm:pb-20 text-center px-4 overflow-hidden relative">
         <!-- Elemento de fundo sutil -->
         <div class="absolute top-10 left-1/2 -translate-x-1/2 opacity-5 w-full">
-            <h2 class="text-[15vw] font-black uppercase tracking-tighter leading-none select-none">Limpeza</h2>
+            <h2 class="text-[18vw] sm:text-[15vw] font-black uppercase tracking-tighter leading-none select-none">Limpeza</h2>
         </div>
 
         <div class="relative z-10">
-            <p class="text-gold-primary/50 tracking-[0.8em] uppercase text-[10px] mb-6">Alquimia da Água e das Ervas</p>
-            <h1 class="text-6xl md:text-8xl font-black gold-text mb-12 uppercase tracking-tighter">Banhos Espirituais</h1>
+            <p class="text-gold-primary/50 tracking-[0.4em] sm:tracking-[0.8em] uppercase text-[8px] sm:text-[10px] mb-4 sm:mb-6">Alquimia da Água e das Ervas</p>
+            <h1 class="text-4xl sm:text-6xl md:text-8xl font-black gold-text mb-8 sm:mb-12 uppercase tracking-tighter break-words px-4">Banhos Espirituais</h1>
             
-            <div class="hero-image-frame reveal">
+            <div class="hero-image-frame reveal px-4">
                 <img src="https://i.ibb.co/NnscXHrZ/Whats-App-Image-2025-12-26-at-19-01-56.jpg" alt="Banhos Místicos" class="main-img">
             </div>
         </div>
@@ -172,28 +195,28 @@
 
     <!-- Citação de Abertura -->
     <section class="max-w-4xl mx-auto px-6 quote-section reveal">
-        <p class="text-2xl md:text-4xl text-gold-light font-light leading-snug">
+        <p class="text-xl sm:text-2xl md:text-4xl text-gold-light font-light leading-snug">
             "Que a água leve o que é denso e as ervas tragam o que é luz. No fluir do banho, a alma se despe do passado e se reveste de poder."
         </p>
-        <span class="block mt-8 text-[10px] uppercase tracking-[0.4em] text-gold-primary/40">— Cântico de Consagração Nythra</span>
+        <span class="block mt-6 sm:mt-8 text-[9px] sm:text-[10px] uppercase tracking-[0.3em] sm:tracking-[0.4em] text-gold-primary/40">— Cântico de Consagração Nythra</span>
     </section>
 
     <!-- Descrição Principal -->
-    <section class="max-w-6xl mx-auto px-6 py-32">
-        <div class="grid lg:grid-cols-2 gap-20 items-center">
-            <div class="space-y-8 reveal">
-                <h2 class="text-4xl gold-text uppercase">O Ritual da Fluidez</h2>
-                <div class="w-20 h-px bg-gold-primary/30"></div>
-                <p class="text-xl leading-relaxed text-gray-300 italic font-light">
+    <section class="max-w-6xl mx-auto px-6 py-16 sm:py-32">
+        <div class="grid lg:grid-cols-2 gap-12 sm:gap-20 items-center">
+            <div class="space-y-6 sm:space-y-8 reveal text-center lg:text-left">
+                <h2 class="text-3xl sm:text-4xl gold-text uppercase">O Ritual da Fluidez</h2>
+                <div class="w-20 h-px bg-gold-primary/30 mx-auto lg:mx-0"></div>
+                <p class="text-lg sm:text-xl leading-relaxed text-gray-300 italic font-light">
                     Os Banhos Espirituais são preparados para promover limpeza, equilíbrio, fortalecimento e direcionamento energético, atuando de forma profunda no campo espiritual, emocional e vibracional.
                 </p>
-                <p class="text-gray-400 leading-relaxed font-light">
+                <p class="text-gray-400 leading-relaxed font-light text-sm sm:text-base">
                     Cada banho é desenvolvido com intenção específica, respeitando fundamentos da feitiçaria tradicional e o momento espiritual de quem o recebe. Todos os banhos são preparados artesanalmente, consagrados e energizados antes do envio, mantendo a força do propósito ao qual se destinam.
                 </p>
             </div>
             
-            <div class="mystic-card p-12 space-y-8 reveal" style="transition-delay: 0.2s;">
-                <h3 class="text-xl gold-text uppercase tracking-widest">Espectro de Atuação</h3>
+            <div class="mystic-card p-8 sm:p-12 space-y-6 sm:space-y-8 reveal" style="transition-delay: 0.2s;">
+                <h3 class="text-lg sm:text-xl gold-text uppercase tracking-widest text-center">Espectro de Atuação</h3>
                 <div class="intentions-grid">
                     <div class="intention-tag">Limpeza</div>
                     <div class="intention-tag">Proteção</div>
@@ -204,7 +227,7 @@
                     <div class="intention-tag">Magnetismo</div>
                     <div class="intention-tag">Harmonia</div>
                 </div>
-                <p class="text-xs text-gray-500 italic pt-6 leading-loose">
+                <p class="text-[10px] sm:text-xs text-gray-500 italic pt-4 sm:pt-6 leading-loose text-center">
                     Indicados para a remoção de cargas densas e ativação de novas vibrações, auxiliando no realinhamento espiritual necessário para a sua jornada.
                 </p>
             </div>
@@ -212,36 +235,36 @@
     </section>
 
     <!-- Secção de Preparo e Sabedoria -->
-    <section class="bg-zinc-950/30 py-32 border-y border-gold-primary/5">
+    <section class="bg-zinc-950/30 py-20 sm:py-32 border-y border-gold-primary/5">
         <div class="max-w-4xl mx-auto px-6 text-center reveal">
-            <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" class="w-20 h-20 mx-auto mb-12 mix-blend-lighten opacity-30 float">
-            <h2 class="text-3xl gold-text mb-10 uppercase tracking-widest">Consagração e Uso</h2>
-            <p class="text-lg text-gray-400 font-light leading-relaxed mb-12">
+            <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-8 sm:mb-12 mix-blend-lighten opacity-30 float">
+            <h2 class="text-2xl sm:text-3xl gold-text mb-6 sm:mb-10 uppercase tracking-widest">Consagração e Uso</h2>
+            <p class="text-base sm:text-lg text-gray-400 font-light leading-relaxed mb-8 sm:mb-12">
                 "O banho espiritual não é apenas um preparo energético, mas um ato sagrado de cuidado, reconexão e transformação."
             </p>
-            <p class="text-gray-500 font-light text-sm leading-loose max-w-2xl mx-auto">
+            <p class="text-gray-500 font-light text-xs sm:text-sm leading-loose max-w-2xl mx-auto px-4">
                 Eles podem ser utilizados de forma ritualística ou integrados à rotina espiritual, sempre acompanhados de orientações básicas para um uso consciente e seguro. Sentir a erva, o aroma e a temperatura é parte do diálogo com o invisível.
             </p>
         </div>
     </section>
 
     <!-- CTA Final -->
-    <section class="py-40 text-center px-6">
-        <h2 class="text-4xl md:text-6xl gold-text mb-14 uppercase tracking-tighter">Deseja um banho personalizado?</h2>
-        <p class="text-gold-primary/40 uppercase tracking-[0.5em] text-[10px] mb-20 leading-loose">
+    <section class="py-24 sm:py-40 text-center px-6">
+        <h2 class="text-3xl sm:text-6xl gold-text mb-8 sm:mb-14 uppercase tracking-tighter">Deseja um banho personalizado?</h2>
+        <p class="text-gold-primary/40 uppercase tracking-[0.3em] sm:tracking-[0.5em] text-[9px] sm:text-[10px] mb-12 sm:mb-20 leading-loose">
             Adriana canaliza as ervas ideais para o seu momento atual.<br>Sinta a força da transmutação na sua pele.
         </p>
         
         <a href="https://wa.me/SEU_NUMERO_AQUI?text=Olá! Gostaria de encomendar um banho espiritual personalizado." 
-           class="inline-block px-12 py-6 border-2 border-gold-primary text-gold-primary font-bold uppercase tracking-[0.6em] hover:bg-gold-primary hover:text-black transition-all duration-700 shadow-[0_0_30px_rgba(212,175,55,0.1)]">
+           class="inline-block px-8 py-5 sm:px-12 sm:py-6 border-2 border-gold-primary text-gold-primary font-bold uppercase text-[10px] sm:text-base tracking-[0.4em] sm:tracking-[0.6em] hover:bg-gold-primary hover:text-black transition-all duration-700 shadow-[0_0_30px_rgba(212,175,55,0.1)]">
             Encomendar meu Banho
         </a>
     </section>
 
     <!-- Rodapé -->
-    <footer class="py-20 text-center opacity-30 border-t border-gold-primary/5">
-        <p class="text-[10px] uppercase tracking-[0.8em]">Nythra Ateliê • Alquimia de Transmutação</p>
-        <div class="mt-8 flex justify-center space-x-6 text-[9px] uppercase tracking-widest">
+    <footer class="py-16 sm:py-20 text-center opacity-30 border-t border-gold-primary/5">
+        <p class="text-[9px] sm:text-[10px] uppercase tracking-[0.5em] sm:tracking-[0.8em]">Nythra Ateliê • Alquimia de Transmutação</p>
+        <div class="mt-6 sm:mt-8 flex justify-center space-x-4 sm:space-x-6 text-[8px] sm:text-[9px] uppercase tracking-widest">
             <a href="index.html" class="hover:text-gold-primary">Início</a>
             <a href="oraculos.html" class="hover:text-gold-primary">Oráculos</a>
             <a href="pos.html" class="hover:text-gold-primary">Pós</a>
@@ -261,8 +284,8 @@
 
         document.querySelectorAll('.reveal').forEach(el => {
             el.style.opacity = "0";
-            el.style.transform = "translateY(40px)";
-            el.style.transition = "all 1.2s cubic-bezier(0.22, 1, 0.36, 1)";
+            el.style.transform = "translateY(30px)";
+            el.style.transition = "all 1s cubic-bezier(0.22, 1, 0.36, 1)";
             observer.observe(el);
         });
     </script>
