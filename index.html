@@ -1,405 +1,674 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nythra Ateliê | Sob a Luz de Hécate e a Força de Morrigan</title>
-    <!-- FAVICON COM A TUA LOGO -->
-    <link rel="icon" type="image/png" href="https://i.ibb.co/DHYthgDk/Design-sem-nome.png">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold-primary: #D4AF37;
-            --gold-light: #F9E498;
-            --gold-dark: #996515;
-            --bg-black: #030303;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090806">
+  <meta name="description" content="Nythra Ateliê — oráculos, alquimia ancestral e criações ritualísticas por Ëlinah Corvinus Nythra.">
+  <title>Nythra Ateliê — Oráculos & Alquimia Ancestral</title>
+  <link rel="icon" href="assets/selo-nythra.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    :root {
+      --bg: #090806;
+      --surface: #100f0c;
+      --surface-2: #17140f;
+      --ivory: #eee7d9;
+      --muted: #aaa497;
+      --bronze: #b58b48;
+      --gold: #d8b975;
+      --wine: #3a161d;
+      --line: rgba(216, 185, 117, .22);
+      --pad: clamp(1.25rem, 4vw, 4rem);
+      --sans: "Manrope", sans-serif;
+      --serif: "Cormorant Garamond", serif;
+      --display: "Cinzel", serif;
+    }
 
-        body {
-            background-color: var(--bg-black);
-            color: #d4d4d4;
-            font-family: 'Cormorant Garamond', serif;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-            width: 100%;
-        }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 280px;
+      background: var(--bg);
+      color: var(--ivory);
+      font-family: var(--serif);
+      font-size: 18px;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    button { color: inherit; }
+    ::selection { background: var(--bronze); color: var(--bg); }
 
-        h1, h2, h3, .nav-item {
-            font-family: 'Cinzel Decorative', cursive;
-        }
+    .skip-link {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      z-index: 1000;
+      transform: translateY(-150%);
+      padding: .7rem 1rem;
+      background: var(--ivory);
+      color: var(--bg);
+      font: 600 .72rem var(--sans);
+    }
+    .skip-link:focus { transform: none; }
 
-        .gold-text {
-            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: shine 8s linear infinite;
-        }
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      height: 82px;
+      padding-inline: var(--pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(9,8,6,.96), rgba(9,8,6,.72));
+      border-bottom: 1px solid transparent;
+      backdrop-filter: blur(18px);
+      transition: height .35s ease, border-color .35s ease;
+    }
+    .site-header.scrolled { height: 68px; border-color: var(--line); }
+    .brand { display: inline-flex; align-items: center; gap: .8rem; min-width: max-content; }
+    .brand img { width: 39px; height: 39px; object-fit: contain; }
+    .brand span { font: 500 .75rem var(--display); letter-spacing: .18em; text-transform: uppercase; }
+    .desktop-nav { display: flex; align-items: center; gap: clamp(1.25rem, 3vw, 3rem); }
+    .desktop-nav > a:not(.button) {
+      position: relative;
+      font: 500 .65rem var(--sans);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .desktop-nav > a:not(.button)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: -.4rem;
+      height: 1px;
+      background: var(--gold);
+      transition: right .3s ease;
+    }
+    .desktop-nav > a:hover { color: var(--ivory); }
+    .desktop-nav > a:hover::after { right: 0; }
 
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .8rem;
+      min-height: 48px;
+      padding: .85rem 1.35rem;
+      border: 1px solid var(--bronze);
+      font: 600 .66rem var(--sans);
+      letter-spacing: .14em;
+      line-height: 1;
+      text-transform: uppercase;
+      transition: color .3s ease, background .3s ease, border-color .3s ease;
+    }
+    .button:hover { color: var(--bg); background: var(--gold); border-color: var(--gold); }
+    .button.filled { color: #0b0906; background: var(--gold); }
+    .button.filled:hover { color: var(--ivory); background: var(--wine); border-color: #6a2a34; }
+    .button .arrow { font-size: 1rem; transition: transform .3s ease; }
+    .button:hover .arrow { transform: translate(3px, -3px); }
 
-        .logo-display {
-            mix-blend-mode: lighten;
-            filter: contrast(1.1) brightness(1.1);
-        }
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      background: transparent;
+      cursor: pointer;
+    }
+    .menu-toggle span,
+    .menu-toggle::before,
+    .menu-toggle::after {
+      content: "";
+      display: block;
+      width: 18px;
+      height: 1px;
+      margin: 5px auto;
+      background: var(--ivory);
+      transition: transform .3s ease, opacity .3s ease;
+    }
+    .menu-open .menu-toggle span { opacity: 0; }
+    .menu-open .menu-toggle::before { transform: translateY(6px) rotate(45deg); }
+    .menu-open .menu-toggle::after { transform: translateY(-6px) rotate(-45deg); }
+    .mobile-nav { display: none; }
 
-        .float { animation: float-anim 6s ease-in-out infinite; }
-        @keyframes float-anim {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(370px, .95fr);
+      position: relative;
+      padding-top: 82px;
+      background:
+        radial-gradient(circle at 22% 40%, rgba(181,139,72,.11), transparent 34%),
+        var(--bg);
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(4rem, 10vh, 8rem) var(--pad);
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      margin: 0 0 1.4rem;
+      color: var(--gold);
+      font: 500 .63rem var(--sans);
+      letter-spacing: .26em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 42px; height: 1px; background: var(--bronze); }
+    h1, h2, h3, p { margin-top: 0; }
+    .hero h1 {
+      max-width: 780px;
+      margin-bottom: 1.6rem;
+      font: 500 clamp(4rem, 9vw, 9.2rem)/.86 var(--display);
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+    }
+    .hero h1 span { display: block; margin-left: clamp(0rem, 7vw, 6rem); color: var(--gold); }
+    .hero-lede {
+      max-width: 580px;
+      margin-bottom: 2.2rem;
+      color: #c6c0b4;
+      font-size: clamp(1.25rem, 2vw, 1.65rem);
+      line-height: 1.35;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+    .hero-aside { position: relative; min-height: 640px; overflow: hidden; }
+    .hero-aside::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--bg) 0%, transparent 32%), linear-gradient(0deg, var(--bg), transparent 38%);
+    }
+    .hero-aside img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 16%; filter: saturate(.7) contrast(1.05); }
+    .hero-seal {
+      position: absolute;
+      z-index: 3;
+      right: clamp(1.25rem, 4vw, 4rem);
+      bottom: clamp(2rem, 5vw, 5rem);
+      width: clamp(100px, 13vw, 168px);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(216,185,117,.45);
+      border-radius: 50%;
+      background: rgba(9,8,6,.55);
+      backdrop-filter: blur(8px);
+    }
+    .hero-seal img { width: 76%; height: 76%; object-fit: contain; filter: none; }
+    .scroll-note {
+      position: absolute;
+      z-index: 4;
+      left: var(--pad);
+      bottom: 1.4rem;
+      font: 500 .58rem var(--sans);
+      letter-spacing: .18em;
+      color: var(--muted);
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
 
-        /* Efeito de brilho sutil para a logo principal */
-        .glow-soft { 
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.2));
-            opacity: 0.95;
-            transition: opacity 0.5s ease;
-        }
-        .glow-soft:hover { opacity: 1; }
+    .manifesto {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: clamp(1.5rem, 5vw, 5rem);
+      padding: clamp(4rem, 9vw, 8rem) var(--pad);
+      border-block: 1px solid var(--line);
+      background: #0c0b09;
+    }
+    .manifesto img { width: clamp(70px, 9vw, 120px); opacity: .74; }
+    .manifesto blockquote { max-width: 920px; margin: 0; font-size: clamp(1.7rem, 3.2vw, 3.25rem); line-height: 1.18; }
+    .manifesto blockquote em { color: var(--gold); font-weight: 400; }
+    .manifesto-index { color: var(--bronze); font: 500 .65rem var(--sans); letter-spacing: .16em; }
 
-        .rotate-center {
-            transform-origin: center;
-            animation: rotate-anim 35s linear infinite;
-        }
-        @keyframes rotate-anim {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+    .section { padding: clamp(6rem, 11vw, 10rem) var(--pad); }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 420px);
+      align-items: end;
+      gap: 2rem;
+      margin-bottom: clamp(3rem, 7vw, 6rem);
+    }
+    .section-number { display: block; margin-bottom: 1rem; color: var(--bronze); font: 500 .62rem var(--sans); letter-spacing: .2em; }
+    .section h2 { margin-bottom: 0; font-size: clamp(3rem, 7vw, 7.2rem); font-weight: 400; line-height: .9; letter-spacing: -.035em; }
+    .section-head p { margin: 0; color: var(--muted); font-size: 1.15rem; }
 
-        .section-container {
-            padding: 80px 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-            position: relative;
-        }
-        @media (min-width: 768px) {
-            .section-container { padding: 140px 20px; }
-        }
+    .oracle-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(1rem, 2vw, 1.6rem); }
+    .oracle-card { position: relative; min-height: 660px; overflow: hidden; border: 1px solid var(--line); }
+    .oracle-card:nth-child(1) { grid-column: span 5; }
+    .oracle-card:nth-child(2) { grid-column: span 3; margin-top: 7rem; }
+    .oracle-card:nth-child(3) { grid-column: span 4; margin-top: 2.5rem; }
+    .oracle-card img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .8s; }
+    .oracle-card:nth-child(1) img { object-position: 50% 35%; }
+    .oracle-card:nth-child(2) img { object-position: 50% 40%; }
+    .oracle-card:nth-child(3) img { object-position: 50% 50%; }
+    .oracle-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,7,5,.96), transparent 65%); }
+    .oracle-card:hover img { transform: scale(1.035); filter: saturate(1.08); }
+    .oracle-copy { position: absolute; z-index: 2; inset: auto 0 0; padding: clamp(1.4rem, 2.8vw, 2.5rem); }
+    .oracle-copy span { display: block; color: var(--gold); font: 500 .58rem var(--sans); letter-spacing: .2em; text-transform: uppercase; }
+    .oracle-copy h3 { margin: .65rem 0 .75rem; font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 400; line-height: 1; }
+    .oracle-copy p { margin: 0; color: #c3bcaf; font-size: 1rem; line-height: 1.45; }
 
-        .altar-card {
-            background: linear-gradient(180deg, rgba(10,10,10,0.8) 0%, rgba(3,3,3,1) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.08);
-            padding: 40px 25px;
-            position: relative;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            display: block; 
-        }
-        @media (min-width: 768px) {
-            .altar-card { padding: 70px 45px; }
-        }
+    .atelier { background: #0d0b09; border-block: 1px solid var(--line); }
+    .collection-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 155px; gap: clamp(.8rem, 1.5vw, 1.25rem); }
+    .collection-card { position: relative; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+    .collection-card:nth-child(1) { grid-column: span 7; grid-row: span 3; }
+    .collection-card:nth-child(2) { grid-column: span 5; grid-row: span 4; }
+    .collection-card:nth-child(3) { grid-column: span 4; grid-row: span 3; }
+    .collection-card:nth-child(4) { grid-column: span 3; grid-row: span 3; }
+    .collection-card:nth-child(5) { grid-column: span 5; grid-row: span 4; }
+    .collection-card:nth-child(6) { grid-column: span 7; grid-row: span 3; }
+    .collection-card:nth-child(7) { grid-column: span 12; grid-row: span 3; }
+    .collection-card img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.74) brightness(.82); transition: transform .8s cubic-bezier(.2,.7,.2,1), filter .8s; }
+    .collection-card:nth-child(2) img { object-position: 50% 58%; }
+    .collection-card:nth-child(3) img { object-position: 50% 48%; }
+    .collection-card:nth-child(5) img { object-position: 50% 40%; }
+    .collection-card:nth-child(6) img { object-position: 50% 45%; }
+    .collection-card:nth-child(7) img { object-position: 50% 54%; }
+    .collection-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8,7,5,.92), transparent 60%); }
+    .collection-card:hover img { transform: scale(1.035); filter: saturate(1) brightness(.9); }
+    .collection-copy { position: absolute; z-index: 2; inset: auto 0 0; display: flex; align-items: end; justify-content: space-between; gap: 1rem; padding: clamp(1.25rem, 2.5vw, 2rem); }
+    .collection-copy h3 { margin: 0; font-size: clamp(1.7rem, 2.7vw, 2.8rem); font-weight: 400; line-height: 1; }
+    .collection-copy p { max-width: 340px; margin: .55rem 0 0; color: #c5bfb2; font-size: .95rem; line-height: 1.4; }
+    .collection-copy .arrow { flex: 0 0 42px; width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(216,185,117,.55); color: var(--gold); font: 400 1rem var(--sans); transition: background .3s, color .3s; }
+    .collection-card:hover .collection-copy .arrow { background: var(--gold); color: var(--bg); }
+    .poppet-pair { position: relative; height: 100%; }
+    .poppet-pair img { position: absolute; inset: 0; }
+    .poppet-pair img:last-child { clip-path: polygon(65% 0, 100% 0, 100% 100%, 48% 100%); }
 
-        .altar-card:hover {
-            border-color: var(--gold-primary);
-            box-shadow: 0 0 60px rgba(212, 175, 55, 0.05);
-            transform: translateY(-8px);
-        }
+    .about { padding-bottom: 0; }
+    .about-grid { display: grid; grid-template-columns: 5fr 7fr; gap: clamp(2rem, 8vw, 8rem); align-items: center; }
+    .portrait-frame { position: relative; padding: clamp(.7rem, 1.3vw, 1.1rem); border: 1px solid var(--line); }
+    .portrait-frame::before { content: ""; position: absolute; width: 55%; height: 35%; top: -18px; left: -18px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+    .portrait-frame img { width: 100%; aspect-ratio: 4 / 5.4; object-fit: cover; object-position: 50% 17%; filter: saturate(.78); }
+    .portrait-label { position: absolute; right: -1.2rem; bottom: 2.2rem; padding: .8rem 1.1rem; background: var(--bg); border: 1px solid var(--line); color: var(--gold); font: 500 .58rem var(--sans); letter-spacing: .17em; text-transform: uppercase; }
+    .about-copy .eyebrow { margin-bottom: 1.4rem; }
+    .about-copy h2 { max-width: 720px; margin-bottom: 2.3rem; font-size: clamp(3.2rem, 6.5vw, 7rem); }
+    .about-copy p { max-width: 720px; margin-bottom: 1.15rem; color: #bbb5a9; font-size: clamp(1.08rem, 1.55vw, 1.3rem); line-height: 1.58; }
+    .about-copy p:first-of-type { color: var(--ivory); font-size: clamp(1.25rem, 2vw, 1.7rem); line-height: 1.42; }
+    .about-copy strong { color: var(--gold); font-weight: 500; }
 
-        .quote-block {
-            font-style: italic;
-            font-size: 1.2rem;
-            color: var(--gold-light);
-            text-align: center;
-            padding: 100px 20px;
-            letter-spacing: 0.05em;
-            position: relative;
-            line-height: 1.4;
-        }
-        @media (min-width: 768px) {
-            .quote-block { font-size: 1.7rem; padding: 150px 20px; }
-        }
+    .values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: clamp(5rem, 9vw, 9rem);
+      border-block: 1px solid var(--line);
+    }
+    .value { min-height: 225px; padding: clamp(1.8rem, 4vw, 3.5rem); border-right: 1px solid var(--line); }
+    .value:last-child { border-right: 0; }
+    .value span { color: var(--bronze); font: 500 .6rem var(--sans); letter-spacing: .18em; }
+    .value h3 { margin: 2.3rem 0 .6rem; font-size: clamp(1.65rem, 2.5vw, 2.4rem); font-weight: 400; line-height: 1.05; }
+    .value p { margin: 0; color: var(--muted); font-size: 1rem; }
 
-        .quote-block::before, .quote-block::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 1px;
-            height: 60px;
-            background: linear-gradient(to bottom, transparent, var(--gold-primary));
-        }
-        @media (min-width: 768px) {
-            .quote-block::before, .quote-block::after { height: 80px; }
-        }
-        .quote-block::before { top: 0; }
-        .quote-block::after { bottom: 0; background: linear-gradient(to top, transparent, var(--gold-primary)); }
+    .shop-cta {
+      position: relative;
+      min-height: 78vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      text-align: center;
+    }
+    .shop-cta > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 48%; filter: saturate(.65) brightness(.42); }
+    .shop-cta::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at center, transparent, rgba(9,8,6,.75)), linear-gradient(0deg, var(--bg), transparent 28%, transparent 72%, var(--bg)); }
+    .shop-inner { position: relative; z-index: 2; max-width: 900px; padding: 7rem var(--pad); }
+    .shop-inner .eyebrow { justify-content: center; }
+    .shop-inner .eyebrow::after { content: ""; width: 42px; height: 1px; background: var(--bronze); }
+    .shop-inner h2 { margin-bottom: 1.4rem; font: 500 clamp(3.4rem, 8vw, 8.5rem)/.9 var(--display); letter-spacing: -.04em; text-transform: uppercase; }
+    .shop-inner h2 span { color: var(--gold); }
+    .shop-inner p { max-width: 560px; margin: 0 auto 2.3rem; color: #d1cabd; font-size: 1.25rem; }
 
-        .noise {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://grainy-gradients.vercel.app/noise.svg');
-            opacity: 0.04;
-            pointer-events: none;
-            z-index: 9999;
-        }
+    footer { padding: 4rem var(--pad) 2rem; border-top: 1px solid var(--line); }
+    .footer-main { display: grid; grid-template-columns: 1fr auto auto; gap: clamp(2rem, 8vw, 8rem); align-items: start; }
+    .footer-brand img { width: 72px; margin-bottom: 1.3rem; opacity: .85; }
+    .footer-brand h2 { margin-bottom: .4rem; font: 500 1rem var(--display); letter-spacing: .14em; text-transform: uppercase; }
+    .footer-brand p { color: var(--muted); font-size: 1rem; }
+    .footer-links { display: grid; gap: .7rem; }
+    .footer-links strong { margin-bottom: .6rem; color: var(--gold); font: 500 .6rem var(--sans); letter-spacing: .18em; text-transform: uppercase; }
+    .footer-links a { color: var(--muted); font: 500 .72rem var(--sans); }
+    .footer-links a:hover { color: var(--ivory); }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid rgba(216,185,117,.12); color: #777267; font: 500 .58rem var(--sans); letter-spacing: .1em; text-transform: uppercase; }
 
-        .divider-svg {
-            width: 100%;
-            max-width: 450px;
-            margin: 30px auto;
-            display: block;
-            opacity: 0.3;
-            color: var(--gold-primary);
-        }
-    </style>
+    .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+    .js .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr .8fr; }
+      .hero h1 { font-size: clamp(4rem, 10vw, 7rem); }
+      .oracle-card { min-height: 550px; }
+      .collection-grid { grid-auto-rows: 130px; }
+      .about-grid { grid-template-columns: 1fr 1.25fr; gap: 3.5rem; }
+    }
+
+    @media (max-width: 780px) {
+      .site-header { height: 70px; padding-left: max(var(--pad), env(safe-area-inset-left)); padding-right: max(var(--pad), env(safe-area-inset-right)); }
+      .desktop-nav { display: none; }
+      .menu-toggle { display: block; }
+      .mobile-nav {
+        position: fixed;
+        z-index: 90;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1.2rem;
+        padding: calc(6rem + env(safe-area-inset-top)) var(--pad) calc(3rem + env(safe-area-inset-bottom));
+        background: rgba(9,8,6,.985);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-1rem);
+        transition: opacity .35s ease, visibility .35s ease, transform .35s ease;
+      }
+      .menu-open .mobile-nav { opacity: 1; visibility: visible; transform: none; }
+      .mobile-nav a:not(.button) { font-size: clamp(2rem, 10vw, 4rem); line-height: 1; }
+      .mobile-nav .button { margin-top: 1.2rem; }
+
+      .hero { display: block; min-height: auto; padding-top: 70px; }
+      .hero-copy { min-height: 68svh; padding-top: 6rem; padding-bottom: 4rem; }
+      .hero h1 { font-size: clamp(3.8rem, 18vw, 6.4rem); }
+      .hero h1 span { margin-left: 8vw; }
+      .hero-aside { min-height: 70svh; }
+      .hero-aside::after { background: linear-gradient(0deg, var(--bg) 0%, transparent 34%, transparent 75%, var(--bg) 100%); }
+      .scroll-note { display: none; }
+
+      .manifesto { grid-template-columns: auto 1fr; }
+      .manifesto blockquote { grid-column: 1 / -1; grid-row: 2; }
+      .manifesto-index { justify-self: end; }
+      .section-head { grid-template-columns: 1fr; }
+      .section-head p { max-width: 560px; }
+      .oracle-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .oracle-card:nth-child(n) { grid-column: auto; margin-top: 0; min-height: 72svh; }
+
+      .collection-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 250px; }
+      .collection-card:nth-child(n) { grid-column: auto; grid-row: span 2; }
+      .collection-card:nth-child(1), .collection-card:nth-child(7) { grid-column: 1 / -1; }
+      .collection-copy { display: block; }
+      .collection-copy .arrow { margin-top: 1rem; }
+
+      .about-grid { grid-template-columns: 1fr; }
+      .portrait-frame { max-width: 560px; margin-inline: auto; }
+      .values { grid-template-columns: 1fr; }
+      .value { min-height: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+      .value:last-child { border-bottom: 0; }
+      .footer-main { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 520px) {
+      body { font-size: 17px; }
+      .brand span { font-size: .66rem; }
+      .hero-actions { display: grid; }
+      .hero-actions .button, .shop-inner .button { width: 100%; min-height: 52px; }
+      .manifesto img { width: 60px; }
+      .collection-grid { grid-template-columns: 1fr; grid-auto-rows: 480px; }
+      .collection-card:nth-child(n) { grid-column: auto; grid-row: auto; }
+      .collection-copy p { display: none; }
+      .portrait-label { right: -.5rem; }
+      .footer-main { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: auto; }
+      .footer-bottom { display: block; }
+      .footer-bottom span { display: block; margin-top: .7rem; }
+    }
+
+    @media (max-width: 350px) {
+      .brand span { display: none; }
+      .hero h1 { font-size: 3.35rem; }
+      .eyebrow { letter-spacing: .16em; }
+      .collection-grid { grid-auto-rows: 420px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+      .js .reveal { opacity: 1; transform: none; }
+    }
+  </style>
 </head>
-<body class="overflow-x-hidden">
-    <div class="noise"></div>
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
-    <!-- Navegação Superior -->
-    <nav class="fixed top-0 w-full z-50 bg-black/95 border-b border-gold-primary/10 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex justify-between items-center">
-            <a href="index.html" class="flex items-center group">
-                <div class="relative w-12 h-12 sm:w-16 sm:h-16 flex items-center justify-center">
-                    <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" 
-                         alt="Nythra Logo" 
-                         class="w-full h-full object-contain logo-display">
-                </div>
-                <span class="ml-2 sm:ml-4 text-sm sm:text-xl font-bold gold-text tracking-widest uppercase">Nythra</span>
-            </a>
-            
-            <div class="hidden lg:flex items-center space-x-12 text-[10px] uppercase tracking-[0.3em] font-light">
-                <a href="oraculos.html" class="hover:text-gold-light transition-colors nav-item">Oráculos</a>
-                <a href="#rituais" class="hover:text-gold-light transition-colors nav-item">Rituais</a>
-                <a href="#alquimia" class="hover:text-gold-light transition-colors nav-item">Alquimia</a>
-                <a href="https://wa.me/SEU_NUMERO_AQUI" class="px-6 py-2 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-black transition-all">Consulta</a>
-            </div>
-            
-            <div class="lg:hidden">
-                <a href="https://wa.me/SEU_NUMERO_AQUI" class="text-[10px] border border-gold-primary px-3 py-1 text-gold-primary uppercase tracking-widest">Contato</a>
-            </div>
-        </div>
+  <header class="site-header" aria-label="Navegação principal">
+    <a class="brand" href="#inicio" aria-label="Nythra Ateliê — início">
+      <img src="assets/selo-nythra.png" alt="">
+      <span>Nythra Ateliê</span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Menu principal">
+      <a href="#oraculos">Oráculos</a>
+      <a href="#atelie">Ateliê</a>
+      <a href="#sobre">Sobre</a>
+      <a class="button filled" href="https://trioditis.shop/?shop=nythra-ateli" target="_blank" rel="noopener">Visitar a loja <span class="arrow" aria-hidden="true">↗</span></a>
     </nav>
 
-    <!-- Hero: O Portal Sagrado -->
-    <section class="min-h-screen flex flex-col items-center justify-center pt-24 text-center px-6 relative overflow-hidden">
-        <div class="mb-4 relative">
-            <!-- Container limpo para a logo sem órbitas brancas -->
-            <div class="relative w-64 h-64 sm:w-80 sm:h-80 md:w-[480px] md:h-[480px] float flex items-center justify-center">
-                <!-- Aura dourada sutil de fundo -->
-                <div class="absolute inset-16 sm:inset-24 bg-gold-primary/5 rounded-full blur-[60px] sm:blur-[110px]"></div>
-                
-                <!-- Logo Pura e Flutuante -->
-                <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" 
-                     alt="Selo Sagrado Nythra" 
-                     class="w-full h-full object-contain logo-display glow-soft relative z-10">
-            </div>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile"><span></span></button>
+  </header>
+
+  <nav class="mobile-nav" id="menu-mobile" aria-label="Menu para celular">
+    <a href="#inicio">Início</a>
+    <a href="#oraculos">Oráculos</a>
+    <a href="#atelie">Ateliê</a>
+    <a href="#sobre">Sobre</a>
+    <a class="button filled" href="https://trioditis.shop/?shop=nythra-ateli" target="_blank" rel="noopener">Visitar a loja <span class="arrow" aria-hidden="true">↗</span></a>
+  </nav>
+
+  <main id="conteudo">
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <p class="eyebrow">Oráculos · Alquimia · Ancestralidade</p>
+        <h1>Nythra <span>Ateliê</span></h1>
+        <p class="hero-lede">Um espaço de acolhimento, orientação e criação ritualística para quem busca clareza, equilíbrio e transformação.</p>
+        <div class="hero-actions">
+          <a class="button" href="#oraculos">Conheça o trabalho <span class="arrow" aria-hidden="true">↓</span></a>
+          <a class="button filled" href="https://trioditis.shop/?shop=nythra-ateli" target="_blank" rel="noopener">Explorar a loja <span class="arrow" aria-hidden="true">↗</span></a>
         </div>
-        
-        <h1 class="text-4xl sm:text-6xl md:text-8xl font-black gold-text mb-6 uppercase tracking-tight break-words max-w-full">Nythra Ateliê</h1>
-        <p class="text-[10px] sm:text-md md:text-xl font-light tracking-[0.4em] sm:tracking-[0.7em] text-gold-primary/50 max-w-4xl mx-auto uppercase mb-12 px-4">
-            Acolhimento • Orientação • Transmutação
-        </p>
-        
-        <svg viewBox="0 0 200 20" class="divider-svg px-10 sm:px-0">
-            <path d="M0 10 L80 10 M120 10 L200 10 M90 10 L110 10" stroke="currentColor" stroke-width="0.5" fill="none"/>
-            <circle cx="100" cy="10" r="3" fill="currentColor"/>
-        </svg>
+      </div>
+      <div class="hero-aside" aria-hidden="true">
+        <img src="assets/adriana.jpg" alt="">
+        <div class="hero-seal"><img src="assets/selo-nythra.png" alt=""></div>
+      </div>
+      <span class="scroll-note">Percorra o limiar</span>
     </section>
 
-    <!-- Citações Hécate -->
-    <div class="quote-block reveal">
-        "Eu sou a Guardiã das Chaves, aquela que ilumina as encruzilhadas da alma e abre os portais da sabedoria esquecida."<br>
-        <span class="text-[10px] uppercase tracking-[0.4em] font-light mt-8 block text-gold-primary/40">— Hécate Brimo</span>
+    <section class="manifesto reveal" aria-label="Manifesto">
+      <img src="assets/selo-nythra.png" alt="Selo Nythra">
+      <blockquote>Conhecimento ancestral, escuta sensível e práticas conduzidas com <em>ética, intenção e respeito</em> à singularidade de cada caminho.</blockquote>
+      <span class="manifesto-index">00 / Manifesto</span>
+    </section>
+
+    <section class="section" id="oraculos">
+      <header class="section-head reveal">
+        <div>
+          <span class="section-number">01 / Artes oraculares</span>
+          <h2>Clareza para<br>as encruzilhadas</h2>
+        </div>
+        <p>Instrumentos simbólicos que iluminam possibilidades, padrões e movimentos do seu caminho — sempre com sigilo e responsabilidade.</p>
+      </header>
+
+      <div class="oracle-grid">
+        <a class="oracle-card reveal" href="oraculos.html" aria-label="Conhecer o Oráculo das Bruxas">
+          <img src="assets/oraculo-bruxas.jpg" alt="Cartas do Oráculo das Bruxas" loading="lazy">
+          <div class="oracle-copy">
+            <span>Intuição · Autoconhecimento</span>
+            <h3>Oráculo das Bruxas</h3>
+            <p>Uma leitura sensível para compreender energias, ciclos e os chamados da sua intuição.</p>
+          </div>
+        </a>
+        <a class="oracle-card reveal" href="oraculos.html" aria-label="Conhecer a Osteomancia">
+          <img src="assets/osteomancia.jpg" alt="Peças utilizadas na leitura de osteomancia" loading="lazy">
+          <div class="oracle-copy">
+            <span>Ancestralidade · Destino</span>
+            <h3>Osteomancia</h3>
+            <p>A sabedoria ancestral manifestada pelos ossos para questões profundas de estrutura e herança espiritual.</p>
+          </div>
+        </a>
+        <a class="oracle-card reveal" href="oraculos.html" aria-label="Conhecer as Runas das Bruxas">
+          <img src="assets/runas.jpg" alt="Runas das Bruxas sobre superfície ritualística" loading="lazy">
+          <div class="oracle-copy">
+            <span>Direção · Decisões</span>
+            <h3>Runas das Bruxas</h3>
+            <p>Símbolos lançados para trazer objetividade, orientação e novas perspectivas às decisões do presente.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section atelier" id="atelie">
+      <header class="section-head reveal">
+        <div>
+          <span class="section-number">02 / O ateliê</span>
+          <h2>Matéria, símbolo<br>e intenção</h2>
+        </div>
+        <p>Criações artesanais preparadas para diferentes propósitos. Cada peça nasce do encontro entre matéria, conhecimento e intenção ritualística.</p>
+      </header>
+
+      <div class="collection-grid">
+        <a class="collection-card reveal" href="banhos.html">
+          <img src="assets/banhos.jpg" alt="Banhos espirituais artesanais" loading="lazy">
+          <div class="collection-copy"><div><h3>Banhos espirituais</h3><p>Limpeza, equilíbrio e fortalecimento do campo energético.</p></div><span class="arrow" aria-hidden="true">→</span></div>
+        </a>
+        <a class="collection-card reveal" href="pos.html">
+          <img src="assets/pos.jpg" alt="Pós artesanais Nythra" loading="lazy">
+          <div class="collection-copy"><div><h3>Pós artesanais</h3><p>Preparos de projeção, proteção e abertura de caminhos.</p></div><span class="arrow" aria-hidden="true">→</span></div>
+        </a>
+        <a class="collection-card reveal" href="oleos.html">
+          <img src="assets/oleos.jpg" alt="Óleos artesanais consagrados" loading="lazy">
+          <div class="collection-copy"><div><h3>Óleos</h3><p>Alquimia botânica para unção, consagração e intenção.</p></div><span class="arrow" aria-hidden="true">→</span></div>
+        </a>
+        <a class="collection-card reveal" href="velas.html">
+          <img src="assets/velas.jpg" alt="Velas artesanais Nythra" loading="lazy">
+          <div class="collection-copy"><div><h3>Velas</h3><p>Fogo, cera e propósito em criações feitas à mão.</p></div><span class="arrow" aria-hidden="true">→</span></div>
+        </a>
+        <a class="collection-card reveal" href="poppets.html">
+          <div class="poppet-pair">
+            <img src="assets/poppets-1.jpg" alt="Poppet artesanal Nythra" loading="lazy">
+            <img src="assets/poppets-2.jpg" alt="Detalhe de poppet artesanal" loading="lazy">
+          </div>
+          <div class="collection-copy"><div><h3>Poppets</h3><p>Instrumentos artesanais de vínculo, foco e direcionamento.</p></div><span class="arrow" aria-hidden="true">→</span></div>
+        </a>
+        <a class="collection-card reveal" href="garrafas.html">
+          <img src="assets/garrafas.jpg" alt="Garrafas artesanais de poder" loading="lazy">
+          <div class="collection-copy"><div><h3>Garrafas</h3><p>Microcosmos artesanais de proteção, contenção e magnetismo.</p></div><span class="arrow" aria-hidden="true">→</span></div>
+        </a>
+        <a class="collection-card reveal" href="tintas.html">
+          <img src="assets/tintas.jpg" alt="Tintas mágicas artesanais" loading="lazy">
+          <div class="collection-copy"><div><h3>Tintas mágicas</h3><p>Pigmentos consagrados para escrita, símbolos, selos e expressão ritualística.</p></div><span class="arrow" aria-hidden="true">→</span></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section about" id="sobre">
+      <div class="about-grid">
+        <div class="portrait-frame reveal">
+          <img src="assets/adriana.jpg" alt="Adriana — Ëlinah Corvinus Nythra" loading="lazy">
+          <span class="portrait-label">Sacerdotisa de Morrigan</span>
+        </div>
+        <div class="about-copy reveal">
+          <p class="eyebrow">03 / Sobre a Adriana</p>
+          <h2>Uma presença ao seu lado</h2>
+          <p>Sou <strong>Sacerdotisa de Morrigan</strong>, me chamo <strong>Ëlinah Corvinus Nythra</strong>, terapeuta integrativa, oraculista e pesquisadora das tradições ancestrais.</p>
+          <p>Dedico meu caminho ao acolhimento e ao desenvolvimento espiritual, oferecendo atendimentos personalizados que unem conhecimento, simbolismo e práticas terapêuticas voltadas ao autoconhecimento, ao equilíbrio energético e à expansão da consciência.</p>
+          <p>Cada consulta e procedimento é realizado com respeito, ética e dedicação, reconhecendo que cada pessoa possui uma história, um propósito e uma jornada únicos.</p>
+          <p>Será uma alegria caminhar ao seu lado, auxiliando você a encontrar clareza, fortalecimento e novas perspectivas para a sua vida.</p>
+        </div>
+      </div>
+
+      <div class="values reveal" aria-label="Valores do atendimento">
+        <article class="value"><span>01</span><h3>Atendimento personalizado</h3><p>Cada história é acolhida em sua singularidade.</p></article>
+        <article class="value"><span>02</span><h3>Ética e respeito</h3><p>Sigilo, responsabilidade e dedicação em cada processo.</p></article>
+        <article class="value"><span>03</span><h3>Clareza e equilíbrio</h3><p>Novas perspectivas para escolhas mais conscientes.</p></article>
+      </div>
+    </section>
+
+    <section class="shop-cta" id="loja">
+      <img src="assets/garrafas.jpg" alt="" loading="lazy">
+      <div class="shop-inner reveal">
+        <p class="eyebrow">Loja oficial</p>
+        <h2>Conheça o <span>Nythra</span></h2>
+        <p>Descubra as criações disponíveis e encontre o instrumento que conversa com o seu momento.</p>
+        <a class="button filled" href="https://trioditis.shop/?shop=nythra-ateli" target="_blank" rel="noopener">Entrar na loja <span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="assets/selo-nythra.png" alt="Selo Nythra">
+        <h2>Nythra Ateliê</h2>
+        <p>Oráculos, alquimia ancestral e criações ritualísticas.</p>
+      </div>
+      <nav class="footer-links" aria-label="Atalhos">
+        <strong>Navegue</strong>
+        <a href="#inicio">Início</a>
+        <a href="#oraculos">Oráculos</a>
+        <a href="#atelie">Ateliê</a>
+        <a href="#sobre">Sobre a Adriana</a>
+      </nav>
+      <div class="footer-links">
+        <strong>Ateliê online</strong>
+        <a href="https://trioditis.shop/?shop=nythra-ateli" target="_blank" rel="noopener">Visitar a loja ↗</a>
+      </div>
     </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> Nythra Ateliê</span>
+      <span>Ética · Acolhimento · Ancestralidade</span>
+    </div>
+  </footer>
 
-    <!-- Seção: A Guardiã (Adriana) -->
-    <section class="section-container reveal">
-        <div class="flex flex-col md:flex-row items-center gap-12 sm:gap-24">
-            <div class="w-full md:w-1/2 text-center md:text-left">
-                <h2 class="text-3xl sm:text-4xl gold-text mb-6 sm:mb-10 uppercase">A Guardiã do Templo</h2>
-                <p class="text-xl sm:text-2xl leading-relaxed font-light text-gray-300 mb-6 sm:mb-8 italic">
-                    Conduzido por <strong>Adriana</strong>, taróloga, médium e terapeuta integrativa com mais de 20 anos de sacerdócio místico.
-                </p>
-                <p class="text-gray-400 font-light leading-relaxed text-base sm:text-lg">
-                    O Nythra Ateliê não é apenas um espaço de consultas, mas um santuário de ética e fundamento. Adriana une sua sensibilidade mediúnica ao rigor técnico das artes oraculares para guiar sua transformação com sigilo e profundo respeito às forças ancestrais.
-                </p>
-            </div>
-            <div class="w-full md:w-1/2 flex justify-center order-first md:order-last">
-                <div class="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center">
-                    <!-- Moldura Mística com Órbitas -->
-                    <div class="absolute inset-0 border border-gold-primary/20 rounded-full rotate-center"></div>
-                    <div class="absolute inset-4 border border-gold-primary/10 rounded-full rotate-center" style="animation-direction: reverse; animation-duration: 25s;"></div>
-                    
-                    <!-- Foto da Adriana em Moldura Circular -->
-                    <div class="relative w-48 h-48 sm:w-64 sm:h-64 rounded-full border-2 border-gold-primary/30 p-2 overflow-hidden">
-                        <div class="w-full h-full rounded-full overflow-hidden border border-gold-primary/50 shadow-[0_0_30px_rgba(212,175,55,0.2)]">
-                            <img src="https://i.ibb.co/TBmM0hVw/adriana.jpg" 
-                                 alt="Adriana - Guardiã do Nythra Ateliê" 
-                                 class="w-full h-full object-cover grayscale-[20%] contrast-[1.1] hover:grayscale-0 transition-all duration-700">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <script>
+    (() => {
+      const header = document.querySelector('.site-header');
+      const toggle = document.querySelector('.menu-toggle');
+      const mobileLinks = document.querySelectorAll('.mobile-nav a');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    <!-- Secção: Oráculos -->
-    <section id="oraculos" class="section-container">
-        <div class="text-center mb-16 sm:mb-28 reveal">
-            <h2 class="text-3xl sm:text-5xl gold-text mb-6 sm:mb-8 tracking-tighter uppercase">Consultas Oraculares</h2>
-            <p class="text-gold-primary/30 uppercase tracking-[0.3em] sm:tracking-[0.6em] text-[10px]">Onde o destino se revela através do sagrado</p>
-        </div>
+      const closeMenu = () => {
+        document.body.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Abrir menu');
+      };
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12">
-            <a href="oraculos.html" class="altar-card text-center reveal">
-                <div class="mb-8 sm:mb-12 h-20 sm:h-24 flex items-center justify-center">
-                    <svg width="40" height="60" sm:width="60" sm:height="90" viewBox="0 0 60 90" class="float">
-                        <rect x="5" y="5" width="50" height="80" rx="2" stroke="var(--gold-primary)" stroke-width="1" />
-                        <circle cx="30" cy="45" r="5" fill="var(--gold-primary)" />
-                    </svg>
-                </div>
-                <h3 class="text-xl sm:text-2xl gold-text mb-4 sm:mb-6 uppercase">Artes Oraculares</h3>
-                <p class="text-gray-500 font-light italic leading-relaxed text-sm sm:text-base">Clique para ver nossas leituras de Tarot, Runas e Osteomancia.</p>
-            </a>
+      toggle.addEventListener('click', () => {
+        const open = document.body.classList.toggle('menu-open');
+        toggle.setAttribute('aria-expanded', String(open));
+        toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      });
+      mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+      window.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
+      window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 24), { passive: true });
 
-            <div class="hidden md:flex items-center justify-center opacity-10">
-                <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" class="w-40 rotate-center">
-            </div>
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        document.querySelectorAll('.reveal').forEach(element => element.classList.add('visible'));
+      } else {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: .1, rootMargin: '0px 0px -40px' });
+        document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+      }
 
-            <div class="altar-card text-center reveal" style="transition-delay: 0.2s;">
-                <div class="mb-8 sm:mb-12 h-20 sm:h-24 flex items-center justify-center">
-                    <svg width="60" height="60" sm:width="85" sm:height="85" viewBox="0 0 100 100">
-                        <path d="M20 40 Q50 0 80 40 M20 60 Q50 100 80 60" stroke="var(--gold-primary)" stroke-width="0.8" opacity="0.6"/>
-                        <circle cx="50" cy="50" r="4" fill="var(--gold-primary)" />
-                    </svg>
-                </div>
-                <h3 class="text-xl sm:text-2xl gold-text mb-4 sm:mb-6 uppercase">Ética Oracular</h3>
-                <p class="text-gray-500 font-light italic leading-relaxed text-sm sm:text-base">Sigilo absoluto e fundamento técnico em cada mensagem revelada.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Secção: Alquimia -->
-    <section id="alquimia" class="section-container">
-        <div class="text-center mb-16 sm:mb-28 reveal">
-            <h2 class="text-3xl sm:text-5xl gold-text mb-6 sm:mb-8 uppercase">Alquimia do Nythra</h2>
-            <p class="text-gold-primary/30 uppercase tracking-[0.3em] sm:tracking-[0.6em] text-[10px]">A essência da terra impregnada de intenção</p>
-        </div>
-
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-10">
-            <a href="banhos.html" class="altar-card text-center reveal">
-                <div class="mb-4 sm:mb-8 flex justify-center">
-                    <svg width="40" height="40" sm:width="65" sm:height="65" viewBox="0 0 100 100" class="mx-auto">
-                        <circle cx="50" cy="50" r="42" stroke="var(--gold-primary)" stroke-width="0.8" stroke-dasharray="5 5" />
-                        <path d="M50 30 C40 30 30 45 30 55 C30 68 40 75 50 75 C60 75 70 68 70 55 C70 45 60 30 50 30Z" stroke="var(--gold-primary)" stroke-width="1.2" fill="rgba(212,175,55,0.05)"/>
-                    </svg>
-                </div>
-                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2">Banhos Espirituais</h3>
-                <p class="text-[8px] sm:text-xs text-gray-500 font-light hidden sm:block">Purificação e renovação do campo áurico.</p>
-            </a>
-
-            <a href="pos.html" class="altar-card text-center reveal" style="transition-delay: 0.1s;">
-                <div class="mb-4 sm:mb-8 flex justify-center">
-                    <svg width="30" height="45" sm:width="45" sm:height="65" viewBox="0 0 50 70" class="mx-auto">
-                        <path d="M5 65 L45 65 L25 10 Z" stroke="var(--gold-primary)" stroke-width="1" fill="none"/>
-                    </svg>
-                </div>
-                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2">Pós Artesanais</h3>
-                <p class="text-[8px] sm:text-xs text-gray-500 font-light hidden sm:block">Pós de projeção e encantamento consagrados.</p>
-            </a>
-
-            <a href="oleos.html" class="altar-card text-center reveal" style="transition-delay: 0.2s;">
-                <div class="mb-4 sm:mb-8 flex justify-center">
-                    <svg width="30" height="45" sm:width="45" sm:height="65" viewBox="0 0 50 70" class="mx-auto">
-                        <path d="M15 10 H35 V20 L45 35 V65 H5 V35 L15 20 Z" stroke="var(--gold-primary)" stroke-width="1" fill="none"/>
-                    </svg>
-                </div>
-                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2">Óleos Unguentes</h3>
-                <p class="text-[8px] sm:text-xs text-gray-500 font-light hidden sm:block">Extratos botânicos para consagração e ritos.</p>
-            </a>
-
-            <a href="velas.html" class="altar-card text-center reveal" style="transition-delay: 0.3s;">
-                <div class="mb-4 sm:mb-8 flex justify-center">
-                    <svg width="30" height="45" sm:width="45" sm:height="65" viewBox="0 0 50 70" class="mx-auto text-gold-primary">
-                        <rect x="15" y="25" width="20" height="40" stroke="currentColor" fill="none" />
-                        <path d="M25 10 Q28 18 25 25 Q22 18 25 10" fill="currentColor" class="float" />
-                    </svg>
-                </div>
-                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2">Velas Artesanais</h3>
-                <p class="text-[8px] sm:text-xs text-gray-500 font-light hidden sm:block">Luz e intenção moldadas em cera pura.</p>
-            </a>
-
-            <a href="poppets.html" class="altar-card text-center reveal" style="transition-delay: 0.4s;">
-                <div class="mb-4 sm:mb-8 flex justify-center">
-                    <svg width="35" height="45" sm:width="55" sm:height="65" viewBox="0 0 60 70" class="mx-auto">
-                        <circle cx="30" cy="20" r="10" stroke="var(--gold-primary)" stroke-width="1.2" />
-                        <path d="M30 30 L30 55 M15 40 L45 40" stroke="var(--gold-primary)" stroke-width="1" />
-                    </svg>
-                </div>
-                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2">Poppets</h3>
-                <p class="text-[8px] sm:text-xs text-gray-500 font-light hidden sm:block">Bonecos rituais para foco e proteção.</p>
-            </a>
-
-            <a href="garrafas.html" class="altar-card text-center reveal" style="transition-delay: 0.5s;">
-                <div class="mb-4 sm:mb-8 flex justify-center">
-                    <svg width="30" height="45" sm:width="45" sm:height="65" viewBox="0 0 50 70" class="mx-auto">
-                        <rect x="18" y="5" width="14" height="15" rx="1" stroke="var(--gold-primary)" stroke-width="1"/>
-                        <path d="M10 25 Q10 20 25 20 Q40 20 40 25 V60 H10 V25Z" stroke="var(--gold-primary)" stroke-width="1.2" fill="none"/>
-                    </svg>
-                </div>
-                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2">Garrafadas</h3>
-                <p class="text-[8px] sm:text-xs text-gray-500 font-light hidden sm:block">Elixires e filtros de força ancestral.</p>
-            </a>
-
-            <a href="tintas.html" class="altar-card text-center reveal" style="transition-delay: 0.6s;">
-                <div class="mb-4 sm:mb-8 flex justify-center">
-                    <svg width="35" height="45" sm:width="55" sm:height="65" viewBox="0 0 60 70" class="mx-auto text-gold-primary">
-                        <path d="M10 50 Q30 65 50 50 V20 H10 Z" stroke="currentColor" fill="none" />
-                    </svg>
-                </div>
-                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2">Tintas Mágicas</h3>
-                <p class="text-[8px] sm:text-xs text-gray-500 font-light hidden sm:block">Pigmentos consagrados para escrita e selos.</p>
-            </a>
-
-            <div class="altar-card text-center reveal opacity-40 cursor-default" style="transition-delay: 0.7s;">
-                <div class="h-12 sm:h-16 flex items-center justify-center mb-2 sm:mb-4">
-                    <span class="text-[8px] uppercase tracking-widest text-gold-primary/50">Em Breve</span>
-                </div>
-                <h3 class="text-[10px] sm:text-xl gold-text uppercase mb-2 italic">Novos Artefatos</h3>
-            </div>
-        </div>
-    </section>
-
-    <!-- Rodapé -->
-    <footer id="contato" class="py-20 sm:py-36 bg-black border-t border-gold-primary/10 relative">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h3 class="text-3xl sm:text-7xl gold-text mb-10 sm:mb-14 uppercase tracking-tighter">Atravesse o Limiar</h3>
-            <p class="text-gold-primary/50 tracking-[0.3em] sm:tracking-[0.5em] uppercase text-[10px] mb-12 sm:mb-20 leading-loose">
-                Agende sua orientação sigilosa com Adriana.<br>Um templo onde a magia é praticada com alma.
-            </p>
-            
-            <a href="https://wa.me/SEU_NUMERO_AQUI" class="inline-block px-10 sm:px-16 py-5 sm:py-7 border-2 border-gold-primary text-gold-primary font-bold uppercase text-[10px] sm:text-base tracking-[0.4em] sm:tracking-[0.6em] hover:bg-gold-primary hover:text-black transition-all duration-1000 shadow-[0_0_30px_rgba(212,175,55,0.1)]">
-                Falar com o Ateliê
-            </a>
-
-            <div class="mt-20 sm:mt-32 space-y-4 sm:space-y-6 opacity-30 px-4">
-                <p class="text-[8px] sm:text-[10px] uppercase tracking-[0.4em] sm:tracking-[0.8em] text-gray-600">Nythra Ateliê • Sigilo Absoluto • Fundamento e Ética</p>
-                <div class="h-px w-20 bg-gold-primary mx-auto"></div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            el.style.opacity = "0";
-            el.style.transform = "translateY(30px)";
-            el.style.transition = "all 1s cubic-bezier(0.22, 1, 0.36, 1)";
-            observer.observe(el);
-        });
-    </script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>

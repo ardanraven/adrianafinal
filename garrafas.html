@@ -1,296 +1,60 @@
-<!DOCTYPE html>
-<html lang="pt-PT">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garrafas de Poder | Nythra Ateliê</title>
-    <link rel="icon" type="image/png" href="https://i.ibb.co/DHYthgDk/Design-sem-nome.png">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold-primary: #D4AF37;
-            --gold-light: #F9E498;
-            --gold-dark: #996515;
-            --bg-black: #030303;
-        }
-
-        body {
-            background-color: var(--bg-black);
-            color: #d4d4d4;
-            font-family: 'Cormorant Garamond', serif;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, .nav-item {
-            font-family: 'Cinzel Decorative', cursive;
-        }
-
-        .gold-text {
-            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: 200% auto;
-            animation: shine 8s linear infinite;
-        }
-
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
-        .noise {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://grainy-gradients.vercel.app/noise.svg');
-            opacity: 0.04;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        /* Moldura Estilo Artefato */
-        .artifact-frame {
-            position: relative;
-            padding: 25px;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            background: rgba(10, 10, 10, 0.6);
-            box-shadow: 0 0 40px rgba(0,0,0,0.5);
-        }
-
-        .main-img {
-            width: 100%;
-            height: auto;
-            filter: contrast(1.1) brightness(0.9) saturate(0.8);
-            transition: transform 1.5s ease;
-        }
-
-        .artifact-frame:hover .main-img {
-            transform: scale(1.03);
-        }
-
-        /* Cards Místicos */
-        .bottle-card {
-            background: rgba(15, 15, 15, 0.5);
-            border: 1px solid rgba(212, 175, 55, 0.08);
-            padding: 40px 30px;
-            transition: all 0.5s ease;
-        }
-
-        .bottle-card:hover {
-            border-color: var(--gold-primary);
-            background: rgba(20, 18, 15, 0.8);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-        }
-
-        .btn-order {
-            border: 1px solid var(--gold-primary);
-            color: var(--gold-primary);
-            letter-spacing: 0.4em;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            background: transparent;
-        }
-
-        .btn-order:hover {
-            background: var(--gold-primary);
-            color: black;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
-        }
-
-        .quote-line {
-            width: 80px;
-            height: 1px;
-            background: var(--gold-primary);
-            margin: 30px auto;
-            opacity: 0.3;
-        }
-
-        .float { animation: float-anim 6s ease-in-out infinite; }
-        @keyframes float-anim {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-    </style>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#090806">
+  <meta name="description" content="Garrafas de Poder — criação ritualística artesanal do Nythra Ateliê.">
+  <title>Garrafas de Poder — Nythra Ateliê</title>
+  <link rel="icon" href="assets/selo-nythra.png" type="image/png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <script>document.documentElement.classList.add('js');</script><link rel="stylesheet" href="assets/product.css">
 </head>
 <body>
-    <div class="noise"></div>
 
-    <!-- Navegação -->
-    <nav class="fixed top-0 w-full z-50 bg-black/95 border-b border-gold-primary/10 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-8 h-20 flex justify-between items-center">
-            <a href="index.html" class="flex items-center group">
-                <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" alt="Nythra Logo" class="w-12 h-12 object-contain mix-blend-lighten">
-                <span class="ml-4 text-lg font-bold gold-text tracking-widest uppercase">Nythra</span>
-            </a>
-            <div class="hidden lg:flex items-center space-x-10 text-[10px] uppercase tracking-[0.3em] font-light">
-                <a href="index.html" class="hover:text-gold-light transition-colors">Portal</a>
-                <a href="poppets.html" class="hover:text-gold-light transition-colors">Poppets</a>
-                <a href="oraculos.html" class="hover:text-gold-light transition-colors">Oráculos</a>
-                <a href="https://wa.me/SEU_NUMERO_AQUI" class="px-5 py-2 border border-gold-primary text-gold-primary hover:bg-gold-primary hover:text-black transition-all">Encomendar</a>
-            </div>
-        </div>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+  <header class="site-header" aria-label="Navegação principal">
+    <a class="brand" href="index.html" aria-label="Nythra Ateliê — início"><img src="assets/selo-nythra.png" alt=""><span>Nythra Ateliê</span></a>
+    <nav class="desktop-nav" aria-label="Menu principal">
+      <a href="index.html">Início</a><a href="oraculos.html">Oráculos</a><a href="index.html#atelie">Ateliê</a><a href="index.html#sobre">Sobre</a>
+      <a class="button filled" href="https://trioditis.shop/?shop=nythra-ateli" target="_blank" rel="noopener">Visitar a loja <span class="arrow" aria-hidden="true">↗</span></a>
     </nav>
-
-    <!-- Header -->
-    <header class="pt-48 pb-20 text-center px-4 relative">
-        <div class="absolute top-24 left-1/2 -translate-x-1/2 opacity-5 w-full">
-            <h2 class="text-[12vw] font-black uppercase tracking-tighter leading-none select-none">Recipientes</h2>
-        </div>
-
-        <div class="relative z-10">
-            <p class="text-gold-primary/50 tracking-[1em] uppercase text-[9px] mb-6">Alquimia de Contenção & Filtros de Poder</p>
-            <h1 class="text-5xl md:text-7xl font-black gold-text mb-12 uppercase tracking-tight">Garrafas Artesanais</h1>
-            
-            <div class="max-w-4xl mx-auto reveal">
-                <div class="artifact-frame overflow-hidden">
-                    <img src="https://i.ibb.co/Sw373dST/Whats-App-Image-2025-12-26-at-19-12-04.jpg" alt="Garrafas de Poder Nythra" class="main-img">
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Citação Mística -->
-    <section class="max-w-4xl mx-auto px-6 py-20 text-center reveal">
-        <p class="text-2xl md:text-4xl text-gold-light font-light italic leading-snug">
-            "No vidro, a intenção se torna imortal. Selamos a erva, o mineral e o segredo, criando um microcosmo onde a magia trabalha sem cessar."
-        </p>
-        <div class="quote-line"></div>
-        <span class="text-[10px] uppercase tracking-[0.4em] text-gold-primary/40">— Fragmento do Grimório Nythra</span>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-mobile"><span></span></button>
+  </header>
+  <nav class="mobile-nav" id="menu-mobile" aria-label="Menu para celular">
+    <a href="index.html">Início</a><a href="oraculos.html">Oráculos</a><a href="index.html#atelie">Ateliê</a><a href="index.html#sobre">Sobre</a>
+    <a class="button filled" href="https://trioditis.shop/?shop=nythra-ateli" target="_blank" rel="noopener">Visitar a loja <span class="arrow" aria-hidden="true">↗</span></a>
+  </nav>
+  <main id="conteudo">
+    <section class="product-hero">
+      <div class="product-hero-copy"><div class="breadcrumb"><a href="index.html">Início</a><span>/</span><a href="index.html#atelie">Ateliê</a><span>/</span><b>Garrafas de Poder</b></div>
+        <p class="eyebrow">Alquimia de contenção, proteção e magnetismo</p><h1>Garrafas<span>de Poder</span></h1><p class="product-subtitle">Microcosmos artesanais criados para dialogar com uma intenção específica.</p>
+        <a class="button filled" href="https://trioditis.shop/?shop=nythra-ateli" target="_blank" rel="noopener">Ver na loja <span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <div class="product-hero-media" style="--image-position:50% 45%"><img src="assets/garrafas.jpg" alt="Garrafas de Poder"><span class="page-mark">Nythra<br>Ateliê</span></div>
     </section>
+    <section class="quote-band reveal" aria-label="Citação"><img src="assets/selo-nythra.png" alt="Selo Nythra"><blockquote>“No vidro, a intenção se torna imortal. Selamos a erva, o mineral e o segredo, criando um microcosmo onde a magia trabalha sem cessar.”<cite>— Fragmento do grimório Nythra</cite></blockquote><span class="quote-index">01 / Essência</span></section>
+    <section class="content-section"><div class="intro-grid"><header class="section-label reveal"><span>02 / Fundamento</span><h2>O que habita no vidro?</h2></header><div class="prose reveal"><p>Conhecidas na tradição como <em>witch bottles</em>, as <strong>Garrafas de Poder</strong> são antigos instrumentos de contenção, proteção e magnetismo. No Nythra Ateliê, cada peça é única e criada para dialogar com uma intenção específica.</p>
+<p>Ervas, minerais, cristais, óleos alquímicos e símbolos de poder são reunidos em uma composição ritualística, selada com cera consagrada. Mais do que objetos decorativos, as garrafas são concebidas como filtros energéticos para o lar, o altar ou o espaço de prática.</p>
+<p>Cada garrafa pede tempo. Sua preparação respeita a secagem das ervas, as regências escolhidas e o período de consagração. Uma leitura orienta quais elementos serão reunidos para o propósito apresentado.</p></div></div></section>
+    <section class="content-section intentions"><header class="intentions-head reveal"><h2>Finalidades<br>e caminhos</h2><p>Finalidades que podem orientar a composição e os elementos reunidos em cada criação.</p></header><div class="intention-grid reveal"><article class="intention"><span>01</span><h3>Proteção do lar</h3></article>
+<article class="intention"><span>02</span><h3>Prosperidade</h3></article>
+<article class="intention"><span>03</span><h3>Quebra de inveja</h3></article>
+<article class="intention"><span>04</span><h3>Fertilidade</h3></article>
+<article class="intention"><span>05</span><h3>Harmonia familiar</h3></article>
+<article class="intention"><span>06</span><h3>Foco e estudo</h3></article>
+<article class="intention"><span>07</span><h3>Magnetismo</h3></article>
+<article class="intention"><span>08</span><h3>Contenção energética</h3></article></div></section>
+    <section class="content-section"><div class="practice-grid"><div class="practice-copy reveal"><p class="eyebrow">03 / Orientações</p><h2>Uso e cuidado</h2><p>Cada Garrafa de Poder acompanha orientações próprias de ativação e posicionamento. Conforme a finalidade, ela pode ser mantida em local discreto, colocada no altar, exposta à luz ou destinada a outra forma específica de interação.</p></div><aside class="practice-note reveal"><small>Importante</small><p>Trate a peça com respeito e consciência. Mantenha-a longe de crianças e animais e não abra, ingira ou manipule seu conteúdo sem orientação.</p></aside></div></section>
+    <section class="shop-cta" style="--cta-position:50% 45%"><img src="assets/garrafas.jpg" alt="" loading="lazy"><div class="shop-inner reveal"><p class="eyebrow">Loja oficial</p><h2>Sele<span>a sua intenção</span></h2><p>Conheça as Garrafas de Poder e as possibilidades disponíveis no Nythra Ateliê.</p><a class="button filled" href="https://trioditis.shop/?shop=nythra-ateli" target="_blank" rel="noopener">Conhecer as garrafas <span class="arrow" aria-hidden="true">↗</span></a></div></section>
+    <nav class="page-nav" aria-label="Outras categorias"><a href="poppets.html"><small>← Anterior</small><strong>Poppets Artesanais</strong></a><a href="tintas.html"><small>Próximo →</small><strong>Tintas Mágicas</strong></a></nav>
+  </main>
 
-    <!-- Descrição Criada -->
-    <section class="max-w-6xl mx-auto px-6 py-24">
-        <div class="grid lg:grid-cols-2 gap-24 items-start">
-            <div class="space-y-12 reveal">
-                <h2 class="text-4xl gold-text uppercase tracking-widest leading-tight">O Que Habita no Vidro?</h2>
-                <div class="space-y-6 text-gray-300 font-light leading-relaxed text-lg">
-                    <p>
-                        As Garrafas de Poder, conhecidas na tradição como <em>Witch Bottles</em>, são antigos instrumentos de contenção, proteção e magnetismo. No Nythra Ateliê, cada garrafa é uma peça única, montada sob encomenda para vibrar na frequência exata da sua necessidade.
-                    </p>
-                    <p class="italic text-gold-light/70">
-                        "Não são apenas objetos decorativos; são filtros energéticos ativos, selados com cera consagrada e fundamentos da bruxaria tradicional."
-                    </p>
-                    <p>
-                        Adriana utiliza elementos naturais, ervas colhidas em momentos planetários específicos, cristais sintonizados, óleos alquímicos e símbolos de poder, para criar um escudo ou um imã vibracional que habitará o seu lar ou o seu altar.
-                    </p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 gap-8 reveal" style="transition-delay: 0.2s;">
-                <div class="bottle-card">
-                    <h3 class="text-xl gold-text uppercase mb-6 flex items-center gap-4">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" />
-                            <path d="M12 8V12L14 14" />
-                        </svg>
-                        Processo Ritualístico
-                    </h3>
-                    <p class="text-gray-400 text-sm leading-relaxed font-light">
-                        Cada garrafa leva tempo. Respeitamos a secagem das ervas, a regência da lua e o tempo de consagração. Ao encomendar, Adriana realiza uma leitura prévia para entender quais elementos devem ser "acordados" para o seu propósito.
-                    </p>
-                </div>
-                <div class="bottle-card">
-                    <h3 class="text-xl gold-text uppercase mb-6 flex items-center gap-4">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M12 3L4 9V21H20V9L12 3Z" />
-                            <path d="M12 11V15" />
-                            <path d="M10 13H14" />
-                        </svg>
-                        Finalidades Comuns
-                    </h3>
-                    <ul class="text-xs text-gray-500 grid grid-cols-2 gap-4 uppercase tracking-widest">
-                        <li>• Proteção do Lar</li>
-                        <li>• Prosperidade</li>
-                        <li>• Quebra de Inveja</li>
-                        <li>• Fertilidade</li>
-                        <li>• Harmonia Familiar</li>
-                        <li>• Foco & Estudo</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção de Passagens e Estudos -->
-    <section class="bg-zinc-950/40 py-32 border-y border-gold-primary/5">
-        <div class="max-w-5xl mx-auto px-8">
-            <h2 class="text-3xl gold-text mb-16 uppercase text-center tracking-[0.4em]">Sabedoria do Vidro e do Selo</h2>
-            
-            <div class="grid md:grid-cols-2 gap-16">
-                <div class="reveal">
-                    <h4 class="text-gold-light uppercase text-sm tracking-widest mb-6">A Contenção do Mal</h4>
-                    <div class="p-8 border-l border-gold-primary/20 bg-white/5">
-                        <p class="text-gray-400 font-light leading-relaxed mb-4 italic">"Historicamente, as garrafas de bruxa eram enterradas sob a soleira da porta. O vidro captura a intenção negativa, e os elementos internos, como pregos ou espinhos, a estilhaçam antes que ela toque os moradores."</p>
-                        <span class="text-[9px] uppercase tracking-widest text-gray-600">— Compêndio de Folclore e Magia Europeia</span>
-                    </div>
-                </div>
-
-                <div class="reveal" style="transition-delay: 0.2s;">
-                    <h4 class="text-gold-light uppercase text-sm tracking-widest mb-6">O Microcosmo Vivo</h4>
-                    <div class="p-8 border-l border-gold-primary/20 bg-white/5">
-                        <p class="text-gray-400 font-light leading-relaxed mb-4 italic">"Uma garrafa de prosperidade não é um amuleto estático. Ela é um jardim espiritual selado. À medida que os óleos e ervas interagem, eles geram uma egrégora constante de crescimento."</p>
-                        <span class="text-[9px] uppercase tracking-widest text-gray-600">— Do 'Tratado de Alquimia das Formas'</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-24 text-center reveal">
-                <img src="https://i.ibb.co/DHYthgDk/Design-sem-nome.png" class="w-16 h-16 mx-auto opacity-20 float mb-10 mix-blend-lighten">
-                <p class="text-lg text-gray-400 font-light italic max-w-2xl mx-auto">
-                    "O que é selado no visível, é manifestado no invisível. O vidro é o limite, a intenção é o infinito."
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Instruções de Uso Sutil -->
-    <section class="py-32 max-w-4xl mx-auto px-6 text-center">
-        <h2 class="text-2xl gold-text mb-10 uppercase tracking-widest">Como Interagir</h2>
-        <p class="text-gray-400 font-light leading-loose">
-            Ao receber sua Garrafa de Poder, você receberá instruções de ativação. Algumas devem ser enterradas, outras expostas ao sol ou mantidas em locais discretos. Trate sua garrafa como um ser vivo: ela é uma guardiã que agora compartilha o espaço com você.
-        </p>
-    </section>
-
-    <!-- CTA Final -->
-    <section class="py-44 text-center px-6">
-        <h2 class="text-4xl md:text-6xl gold-text mb-14 uppercase tracking-tighter">Selo sua Intenção</h2>
-        <p class="max-w-2xl mx-auto text-gold-primary/40 uppercase tracking-[0.5em] text-[10px] mb-20 leading-loose">
-            As Garrafas de Poder são feitas exclusivamente sob encomenda.<br>Fale com a Adriana para iniciar o seu filtro de poder personalizado.
-        </p>
-        
-        <a href="https://wa.me/SEU_NUMERO_AQUI?text=Olá! Gostaria de encomendar uma Garrafa de Poder personalizada." 
-           class="inline-block px-14 py-7 btn-order text-[10px] uppercase font-bold">
-            Solicitar Orçamento
-        </a>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-20 text-center opacity-30 border-t border-gold-primary/5">
-        <p class="text-[10px] uppercase tracking-[0.8em] mb-8">Nythra Ateliê • Sigilo • Fundamento • Ética</p>
-        <div class="flex justify-center space-x-8 text-[9px] uppercase tracking-widest">
-            <a href="index.html" class="hover:text-gold-primary transition-colors">Portal Principal</a>
-            <a href="poppets.html" class="hover:text-gold-primary transition-colors">Poppets</a>
-            <a href="tintas.html" class="hover:text-gold-primary transition-colors">Próximo: Tintas</a>
-        </div>
-    </footer>
-
-    <script>
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = "1";
-                    entry.target.style.transform = "translateY(0)";
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => {
-            el.style.opacity = "0";
-            el.style.transform = "translateY(30px)";
-            el.style.transition = "all 1.2s cubic-bezier(0.22, 1, 0.36, 1)";
-            observer.observe(el);
-        });
-    </script>
-</body>
-</html>
+  <footer>
+    <div class="footer-main">
+      <div class="footer-brand"><img src="assets/selo-nythra.png" alt="Selo Nythra"><h2>Nythra Ateliê</h2><p>Oráculos, alquimia ancestral e criações ritualísticas.</p></div>
+      <nav class="footer-links" aria-label="Atalhos"><strong>Navegue</strong><a href="index.html">Início</a><a href="oraculos.html">Oráculos</a><a href="index.html#atelie">Ateliê</a><a href="index.html#sobre">Sobre a Adriana</a></nav>
+      <div class="footer-links"><strong>Ateliê online</strong><a href="https://trioditis.shop/?shop=nythra-ateli" target="_blank" rel="noopener">Visitar a loja ↗</a></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year">2026</span> Nythra Ateliê</span><span>Ética · Acolhimento · Ancestralidade</span></div>
+  </footer>
+  <script src="assets/product.js"></script>
+</body></html>
